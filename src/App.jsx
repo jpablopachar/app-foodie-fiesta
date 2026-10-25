@@ -1,7 +1,12 @@
 function App() {
   return (
     <>
-      <div className='text-red-500 bg-black'>App</div>
+      <div className="flex gap-12">
+        <button className="btn-secondary">Solid</button>
+        <button className="btn-light">Light</button>
+        <button className="btn-outline">Outline</button>
+        <button className="btn-white">White</button>
+      </div>
     </>
   )
 }
