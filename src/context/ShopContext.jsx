@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
@@ -9,7 +9,7 @@ export const ShopContext = createContext()
 const ShopContextProvider = (props) => {
   const currency = '$'
   const deliveryCharges = 10
-  const backendUrl = import.meta.env.VITE_BACKEND_URL
+  const serverUrl = import.meta.env.VITE_SERVER_URL
 
   const navigate = useNavigate()
 
@@ -36,7 +36,7 @@ const ShopContextProvider = (props) => {
     if (token) {
       try {
         await axios.post(
-          `${backendUrl}/cart/add`,
+          `${serverUrl}/cart/add`,
           { itemId, size },
           {
             headers: {
@@ -52,17 +52,60 @@ const ShopContextProvider = (props) => {
     }
   }
 
+  const getProducts = async () => {
+    try {
+      const res = await axios.get(`${serverUrl}/product/list`)
+
+      if (res.data.success) {
+        setFoods(res.data.products)
+      } else {
+        toast.error(res.data.message)
+      }
+    } catch (error) {
+      console.error(error)
+
+      toast.error(error.message)
+    }
+  }
+
+  const getUserCart = async (token) => {
+    try {
+      const res = await axios.post(`${serverUrl}/cart/get`, {}, { headers: { token } })
+
+      if (res.data.success) {
+        setCartItems(res.data.cartData)
+      }
+    } catch (error) {
+      console.log(error)
+
+      toast.error(error.message)
+    }
+  }
+
+  useEffect(() => {
+    if (!token && localStorage.getItem('token')) {
+      const storedToken = localStorage.getItem('token')
+
+      setToken(storedToken)
+      getUserCart(storedToken)
+    }
+
+    getProducts()
+  }, [token])
+
   const contextValue = {
     cartItems,
     foods,
     currency,
     deliveryCharges,
-    backendUrl,
+    serverUrl,
     token,
     navigate,
     setCartItems,
     setToken,
     addToCart,
+    getProducts,
+    getUserCart,
   }
 
   return <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>
