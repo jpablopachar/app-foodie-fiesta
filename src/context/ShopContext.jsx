@@ -1,22 +1,37 @@
 import { createContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import axios from 'axios'
 import { toast } from 'react-toastify'
+import { CURRENCY, DELIVERY_CHARGES } from '../constants/shop'
+import { addCartItem, getUserCart as fetchUserCart } from '../services/cartService'
+import { serverUrl } from '../services/httpClient'
+import getProductsFromService from '../services/productService'
 
+/**
+ * Contexto con el estado y las acciones compartidas de la tienda.
+ */
 export const ShopContext = createContext()
 
+/**
+ * Provee el estado del carrito, los productos y las acciones de la tienda.
+ *
+ * @param props - Contenido que recibirá el contexto.
+ * @returns Proveedor del contexto de la tienda.
+ */
 const ShopContextProvider = (props) => {
-  const currency = '$'
-  const deliveryCharges = 10
-  const serverUrl = import.meta.env.VITE_SERVER_URL
-
   const navigate = useNavigate()
 
   const [cartItems, setCartItems] = useState({})
   const [foods, setFoods] = useState([])
   const [token, setToken] = useState('')
 
+  /**
+   * Añade una unidad de un producto y tamaño al carrito.
+   *
+   * @param {string} itemId - Identificador del producto.
+   * @param {string} size - Talla o tamaño seleccionado.
+   * @returns Promesa que se resuelve al completar la operación.
+   */
   const addToCart = async (itemId, size) => {
     let cartData = structuredClone(cartItems)
 
@@ -35,15 +50,7 @@ const ShopContextProvider = (props) => {
 
     if (token) {
       try {
-        await axios.post(
-          `${serverUrl}/cart/add`,
-          { itemId, size },
-          {
-            headers: {
-              token,
-            },
-          },
-        )
+        await addCartItem(itemId, size, token)
       } catch (error) {
         console.error(error)
 
@@ -52,9 +59,14 @@ const ShopContextProvider = (props) => {
     }
   }
 
+  /**
+   * Carga la lista de productos y actualiza el estado de la tienda.
+   *
+   * @returns Promesa que se resuelve al completar la carga.
+   */
   const getProducts = async () => {
     try {
-      const res = await axios.get(`${serverUrl}/product/list`)
+      const res = await getProductsFromService()
 
       if (res.data.success) {
         setFoods(res.data.products)
@@ -68,9 +80,15 @@ const ShopContextProvider = (props) => {
     }
   }
 
+  /**
+   * Carga el carrito del usuario autenticado y actualiza su estado.
+   *
+   * @param {string} token - Token de autenticación del usuario.
+   * @returns Promesa que se resuelve al completar la carga.
+   */
   const getUserCart = async (token) => {
     try {
-      const res = await axios.post(`${serverUrl}/cart/get`, {}, { headers: { token } })
+      const res = await fetchUserCart(token)
 
       if (res.data.success) {
         setCartItems(res.data.cartData)
@@ -96,8 +114,8 @@ const ShopContextProvider = (props) => {
   const contextValue = {
     cartItems,
     foods,
-    currency,
-    deliveryCharges,
+    currency: CURRENCY,
+    deliveryCharges: DELIVERY_CHARGES,
     serverUrl,
     token,
     navigate,
