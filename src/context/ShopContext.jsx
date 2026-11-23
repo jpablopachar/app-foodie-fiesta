@@ -1,11 +1,12 @@
 import { createContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import { CURRENCY, DELIVERY_CHARGES } from '../constants/shop'
 import { addCartItem, getUserCart as fetchUserCart } from '../services/cartService'
 import { serverUrl } from '../services/httpClient'
 import getProductsFromService from '../services/productService'
+import { showError } from '../utils/notifications'
+import { getStoredToken } from '../utils/storage'
 
 /**
  * Contexto con el estado y las acciones compartidas de la tienda.
@@ -54,10 +55,32 @@ const ShopContextProvider = (props) => {
       } catch (error) {
         console.error(error)
 
-        toast.error(error.message)
+        showError(error.message)
       }
     }
   }
+
+  /**
+   * Obtiene la cantidad total de productos en el carrito.
+   * @returns {number} - Cantidad total de productos en el carrito.
+   */
+  const getCartCount = () => {
+    let totalCount = 0;
+
+    for (const items in cartItems) {
+      for (const item in cartItems[items]) {
+        try {
+          if (cartItems[items][item] > 0) {
+            totalCount += cartItems[items][item];
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+
+    return totalCount;
+  };
 
   /**
    * Carga la lista de productos y actualiza el estado de la tienda.
@@ -71,12 +94,12 @@ const ShopContextProvider = (props) => {
       if (res.data.success) {
         setFoods(res.data.products)
       } else {
-        toast.error(res.data.message)
+        showError(res.data.message)
       }
     } catch (error) {
       console.error(error)
 
-      toast.error(error.message)
+      showError(error.message)
     }
   }
 
@@ -96,16 +119,18 @@ const ShopContextProvider = (props) => {
     } catch (error) {
       console.log(error)
 
-      toast.error(error.message)
+      showError(error.message)
     }
   }
 
   useEffect(() => {
-    if (!token && localStorage.getItem('token')) {
-      const storedToken = localStorage.getItem('token')
+    if (!token) {
+      const storedToken = getStoredToken()
 
-      setToken(storedToken)
-      getUserCart(storedToken)
+      if (storedToken) {
+        setToken(storedToken)
+        getUserCart(storedToken)
+      }
     }
 
     getProducts()
@@ -122,6 +147,7 @@ const ShopContextProvider = (props) => {
     setCartItems,
     setToken,
     addToCart,
+    getCartCount,
     getProducts,
     getUserCart,
   }
