@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "menu": "Menú",
+    "contact": "Contacto",
+    "orders": "Pedidos",
+    "cart": "Carrito"
+  },
+  "actions": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "subscribe": "Suscribirse",
+    "explore": "Explorar ahora",
+    "addToCart": "Agregar al carrito"
+  },
+  "product": {
+    "prep": "Preparación:",
+    "price": "Precio:"
+  },
+  "language": {
+    "select": "Seleccionar idioma"
+  },
+  "footer": {
+    "rightsReserved": "Todos los derechos reservados"
+  }
+}

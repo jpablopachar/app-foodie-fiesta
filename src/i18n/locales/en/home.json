@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "titleBefore": "Grab exclusive",
+    "titleAfter": "discounts now!",
+    "description": "Foodessa: a world of flavors, freshness, and delight. Discover dishes that satisfy your cravings, excite your taste buds, and bring people together. From classic favorites to modern delights, find the perfect meal for every moment.",
+    "badges": {
+      "fastDelivery": "Fast delivery",
+      "fastDeliveryDescription": "Fresh, hot meals at your doorstep.",
+      "dishes": "99+ dishes",
+      "branches": "200+ branches",
+      "branchesDescription": "Bringing great food closer to you.",
+      "happyCustomers": "Happy customers",
+      "happyCustomersDescription": "Serving smiles with every delicious bite.",
+      "expertCooks": "Expert cooks"
+    }
+  },
+  "features": {
+    "title": "WHY CHOOSE US?",
+    "fastDelivery": {
+      "title": "Fast delivery",
+      "description": "Get your order quickly with our reliable and efficient service."
+    },
+    "hotFoods": {
+      "title": "Hot foods",
+      "description": "Savor freshly prepared, steaming hot meals delivered straight to you."
+    },
+    "freshFoods": {
+      "title": "Fresh foods",
+      "description": "We serve meals made from the freshest and finest ingredients daily."
+    },
+    "expertChefs": {
+      "title": "Expert chefs",
+      "description": "Our skilled chefs craft every dish with passion and precision."
+    }
+  },
+  "popularFoods": {
+    "title": "POPULAR FOODS"
+  },
+  "testimonials": {
+    "title": "DELICIOUS REVIEWS",
+    "whatPeopleSay": "What people say",
+    "reviewCount": "more than +25,000 reviews",
+    "verified": "Verified",
+    "reviews": [
+      {
+        "name": "John Doe",
+        "title": "High quality",
+        "description": "The food was absolutely delicious! Every bite was bursting with flavor, and the quality was top-notch. The service was quick, and everything arrived fresh. Highly recommend trying it out!"
+      },
+      {
+        "name": "Izabella Stress",
+        "title": "Tasty flavor",
+        "description": "Amazing experience! The meals were perfectly cooked, and the flavors blended beautifully. The delivery was on time, and the packaging kept everything warm. Will definitely order again!"
+      }
+    ]
+  },
+  "description": "Our food products are crafted with the finest ingredients to deliver exceptional taste and quality.",
+  "footer": {
+    "headline": "Discover flavors that awaken your taste buds.",
+    "description": "Experience a variety of dishes made with the freshest ingredients and bold, authentic flavors. Enjoy a delicious journey.",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "lookingFor": "Looking for something delicious? Explore a variety of mouthwatering meals, crafted to satisfy your cravings and bring joy to every occasion.",
+    "columns": [
+      {
+        "title": "Learn more",
+        "links": [
+          "About us",
+          "Fresh foods",
+          "Fast foods",
+          "Hot deals",
+          "Popular foods",
+          "FAQ"
+        ]
+      },
+      {
+        "title": "Our community",
+        "links": [
+          "Terms and conditions",
+          "Special offers",
+          "Customer reviews"
+        ]
+      }
+    ],
+    "contactTitle": "Contact us",
+    "contactNumber": "Contact number",
+    "emailAddress": "Email address",
+    "socialTitle": "Social"
+  }
+}

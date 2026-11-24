@@ -1,4 +1,6 @@
 import { FaCheck, FaStar } from 'react-icons/fa6'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Muestra una reseña verificada con la información del cliente y las imágenes
@@ -12,6 +14,8 @@ import { FaCheck, FaStar } from 'react-icons/fa6'
  * @returns Tarjeta de una reseña verificada.
  */
 const TestimonialCard = ({ name, title, description, userImage, foodImages }) => {
+  const { t } = useTranslation('home')
+
   return (
     <article className="flex flex-col gap-1 rounded-lg p-4 bg-deep">
       <div className="flexBetween">
@@ -21,7 +25,7 @@ const TestimonialCard = ({ name, title, description, userImage, foodImages }) =>
         </div>
         <div className="bg-secondary text-white rounded-full flexCenter gap-x-2 p-1 px-2 text-xs font-semibold">
           <FaCheck />
-          Verified
+          {t(TRANSLATION_KEYS.home.testimonials.verified, { ns: 'home' })}
         </div>
       </div>
       <hr className="h-px w-full my-2 border-gray-200" />

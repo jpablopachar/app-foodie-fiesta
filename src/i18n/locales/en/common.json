@@ -1,0 +1,26 @@
+{
+  "navigation": {
+    "home": "Home",
+    "menu": "Menu",
+    "contact": "Contact",
+    "orders": "Orders",
+    "cart": "Cart"
+  },
+  "actions": {
+    "login": "Login",
+    "logout": "Logout",
+    "subscribe": "Subscribe",
+    "explore": "Explore now",
+    "addToCart": "Add to cart"
+  },
+  "product": {
+    "prep": "Prep:",
+    "price": "Price:"
+  },
+  "language": {
+    "select": "Select language"
+  },
+  "footer": {
+    "rightsReserved": "All rights reserved"
+  }
+}

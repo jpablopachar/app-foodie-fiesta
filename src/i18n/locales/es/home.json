@@ -1,0 +1,90 @@
+{
+  "hero": {
+    "titleBefore": "Aprovecha nuestros descuentos exclusivos en",
+    "titleAfter": "¡ahora!",
+    "description": "Foodessa: un mundo de sabores, frescura y delicias. Descubre platos que satisfacen tus antojos, emocionan tu paladar y unen a las personas. Desde clásicos favoritos hasta propuestas modernas, encuentra la comida perfecta para cada momento.",
+    "badges": {
+      "fastDelivery": "Entrega rápida",
+      "fastDeliveryDescription": "Comida fresca y caliente hasta tu puerta.",
+      "dishes": "Más de 99 platos",
+      "branches": "Más de 200 sucursales",
+      "branchesDescription": "Acercamos la buena comida a ti.",
+      "happyCustomers": "Clientes felices",
+      "happyCustomersDescription": "Compartimos sonrisas en cada delicioso bocado.",
+      "expertCooks": "Cocineros expertos"
+    }
+  },
+  "features": {
+    "title": "¿POR QUÉ ELEGIRNOS?",
+    "fastDelivery": {
+      "title": "Entrega rápida",
+      "description": "Recibe tu pedido rápidamente con nuestro servicio confiable y eficiente."
+    },
+    "hotFoods": {
+      "title": "Comida caliente",
+      "description": "Disfruta de comidas recién preparadas y calientes, entregadas directamente en tu puerta."
+    },
+    "freshFoods": {
+      "title": "Alimentos frescos",
+      "description": "Preparamos comidas con los ingredientes más frescos y selectos cada día."
+    },
+    "expertChefs": {
+      "title": "Chefs expertos",
+      "description": "Nuestros talentosos chefs preparan cada plato con pasión y precisión."
+    }
+  },
+  "popularFoods": {
+    "title": "PLATOS POPULARES"
+  },
+  "testimonials": {
+    "title": "RESEÑAS DELICIOSAS",
+    "whatPeopleSay": "Lo que dice la gente",
+    "reviewCount": "más de +25.000 reseñas",
+    "verified": "Verificado",
+    "reviews": [
+      {
+        "name": "John Doe",
+        "title": "Alta calidad",
+        "description": "¡La comida estaba absolutamente deliciosa! Cada bocado estaba lleno de sabor y la calidad fue excelente. El servicio fue rápido y todo llegó fresco. ¡Lo recomiendo mucho!"
+      },
+      {
+        "name": "Izabella Stress",
+        "title": "Sabor delicioso",
+        "description": "¡Una experiencia increíble! Las comidas estaban perfectamente cocinadas y los sabores combinaban de maravilla. La entrega llegó a tiempo y el empaque mantuvo todo caliente. ¡Sin duda volveré a pedir!"
+      }
+    ]
+  },
+  "description": "Nuestros platos se preparan con los mejores ingredientes para ofrecer un sabor y una calidad excepcionales.",
+  "footer": {
+    "headline": "Descubre sabores que despiertan tu paladar.",
+    "description": "Disfruta de una variedad de platos preparados con ingredientes frescos y sabores auténticos. Embárcate en un delicioso viaje.",
+    "emailPlaceholder": "Ingresa tu correo electrónico",
+    "subscribe": "Suscribirse",
+    "lookingFor": "¿Buscas algo delicioso? Explora una variedad de comidas irresistibles, preparadas para satisfacer tus antojos y alegrar cada ocasión.",
+    "columns": [
+      {
+        "title": "Conoce más",
+        "links": [
+          "Sobre nosotros",
+          "Alimentos frescos",
+          "Comida rápida",
+          "Ofertas especiales",
+          "Platos populares",
+          "Preguntas frecuentes"
+        ]
+      },
+      {
+        "title": "Nuestra comunidad",
+        "links": [
+          "Términos y condiciones",
+          "Ofertas especiales",
+          "Opiniones de clientes"
+        ]
+      }
+    ],
+    "contactTitle": "Contáctanos",
+    "contactNumber": "Teléfono",
+    "emailAddress": "Correo electrónico",
+    "socialTitle": "Redes sociales"
+  }
+}

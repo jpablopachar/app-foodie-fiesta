@@ -4,13 +4,16 @@ import { ShopContext } from '../context/ShopContext'
 import { showError } from '../utils/notifications'
 import { setStoredToken } from '../utils/storage'
 import { STATES } from '../constants/states'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
 import { loginUser, registerUser } from '../services/userService'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Muestra el formulario para iniciar sesión o crear una cuenta.
  * Al autenticar al usuario, guarda su token y redirige a la página principal.
  */
 const Login = () => {
+  const { t } = useTranslation('auth')
   const { token, setToken, navigate, getUserCart } = useContext(ShopContext)
 
   const [currentState, setCurrentState] = useState(STATES.LOGIN)
@@ -81,66 +84,73 @@ const Login = () => {
           >
             <div className="w-full mb-4">
               <h3 className="bold-36">
-                {currentState === STATES.LOGIN ? STATES.LOGIN : STATES.SIGN_UP}
+                {currentState === STATES.LOGIN
+                  ? t(TRANSLATION_KEYS.auth.login.title)
+                  : t(TRANSLATION_KEYS.auth.login.createAccount)}
               </h3>
             </div>
             {currentState === STATES.SIGN_UP && (
               <div className="w-full">
                 <label htmlFor="name" className="medium-14">
-                  Name
+                  {t(TRANSLATION_KEYS.auth.login.name)}
                 </label>
                 <input
+                  id="name"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                   type="text"
-                  placeholder="Name"
+                  placeholder={t(TRANSLATION_KEYS.auth.login.name)}
                   className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded-sm bg-primary mt-1"
                 />
               </div>
             )}
             <div className="w-full">
               <label htmlFor="email" className="medium-14">
-                Email
+                {t(TRANSLATION_KEYS.auth.login.email)}
               </label>
               <input
+                id="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 type="email"
-                placeholder="Email"
+                placeholder={t(TRANSLATION_KEYS.auth.login.email)}
                 className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded-sm bg-primary mt-1"
               />
             </div>
             <div className="w-full">
               <label htmlFor="password" className="medium-14">
-                Password
+                {t(TRANSLATION_KEYS.auth.login.password)}
               </label>
               <input
+                id="password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 type="password"
-                placeholder="Password"
+                placeholder={t(TRANSLATION_KEYS.auth.login.password)}
                 className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded-sm bg-primary mt-1"
               />
             </div>
             <button type="submit" className="btn-dark w-full mt-5 py-1.75! rounded-sm!">
-              {currentState === STATES.SIGN_UP ? STATES.SIGN_UP : STATES.LOGIN}
+              {currentState === STATES.SIGN_UP
+                ? t(TRANSLATION_KEYS.auth.login.createAccount)
+                : t(TRANSLATION_KEYS.auth.login.title)}
             </button>
             <div className="w-full flex flex-col gap-y-3 medium-14">
-              <div className="underline">Forgot your password?</div>
+              <div className="underline">{t(TRANSLATION_KEYS.auth.login.forgotPassword)}</div>
               {currentState === STATES.LOGIN ? (
                 <div className="underline">
-                  Don't have an account?
+                  {t(TRANSLATION_KEYS.auth.login.noAccount)}
                   <span onClick={() => setCurrentState(STATES.SIGN_UP)} className="cursor-pointer">
                     {' '}
-                    Create account
+                    {t(TRANSLATION_KEYS.auth.login.createAccount)}
                   </span>
                 </div>
               ) : (
                 <div className="underline">
-                  Already have an account?
+                  {t(TRANSLATION_KEYS.auth.login.hasAccount)}
                   <span onClick={() => setCurrentState(STATES.LOGIN)} className="cursor-pointer">
                     {' '}
-                    Login
+                    {t(TRANSLATION_KEYS.auth.login.title)}
                   </span>
                 </div>
               )}

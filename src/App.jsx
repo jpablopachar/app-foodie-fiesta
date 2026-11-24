@@ -5,10 +5,12 @@ import Header from './components/Header'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import { ROUTES } from './constants/routes'
+import DocumentLanguage from './components/DocumentLanguage'
 
 function App() {
   return (
     <>
+      <DocumentLanguage />
       <main className="overflow-hidden bg-light text-tertiary">
         <ToastContainer />
         <Header />

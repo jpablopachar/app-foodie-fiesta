@@ -2,6 +2,8 @@ import { useContext, useState } from 'react'
 import { FaStar, FaStarHalfStroke } from 'react-icons/fa6'
 import { TbShoppingBagPlus } from 'react-icons/tb'
 import { ShopContext } from '../context/ShopContext'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Muestra la información de un alimento y permite seleccionar su tamaño
@@ -11,6 +13,7 @@ import { ShopContext } from '../context/ShopContext'
  * @returns Tarjeta con los datos, tamaños, precio y acción de compra del alimento.
  */
 const Item = ({ food }) => {
+  const { t } = useTranslation('common')
   const { currency, addToCart } = useContext(ShopContext)
 
   const [size, setSize] = useState(food.sizes[0])
@@ -62,6 +65,7 @@ const Item = ({ food }) => {
             </div>
             <button
               onClick={() => addToCart(food._id, size)}
+              aria-label={t(TRANSLATION_KEYS.common.actions.addToCart)}
               className="flexCenter gap-x-1 text-[18px] bg-secondary text-white rounded-xs p-0.75"
             >
               <TbShoppingBagPlus />
@@ -69,12 +73,12 @@ const Item = ({ food }) => {
           </div>
           <div className="flexBetween rounded-xl pb-3 text-[13px] font-semibold">
             <div className="flexBetween gap-1">
-              <h5>Prep:</h5>
+              <h5>{t(TRANSLATION_KEYS.common.product.prep)}</h5>
               <p className="text-xs relative top-px">20m</p>
             </div>
             <hr className="h-4 w-px bg-tertiary/10 border-none" />
             <div className="flexCenter gap-1">
-              <h5>Price:</h5>
+              <h5>{t(TRANSLATION_KEYS.common.product.price)}</h5>
               <p className="text-xs text-secondary relative top-px">
                 {currency}
                 {food.price[size]}

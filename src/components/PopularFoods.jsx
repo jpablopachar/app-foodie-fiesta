@@ -6,6 +6,8 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Autoplay, Pagination } from 'swiper/modules'
 import Item from './Item'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Filtra y muestra los alimentos populares en un carrusel automático.
@@ -13,6 +15,7 @@ import Item from './Item'
  * @returns Sección con el carrusel de alimentos populares.
  */
 const PopularFoods = () => {
+  const { t } = useTranslation('home')
   const { foods } = useContext(ShopContext)
   const [popularFoods, setPopularFoods] = useState([])
 
@@ -25,8 +28,7 @@ const PopularFoods = () => {
   return (
     <section className="max-padd-container pt-16">
       <Title
-        title1={'POPULAR'}
-        title2={'FOODS'}
+        title1={t(TRANSLATION_KEYS.home.popularFoods.title, { ns: 'home' })}
         titleStyles={'text-center pb-16!'}
         paraStyles={'block!'}
       />

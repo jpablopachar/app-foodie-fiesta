@@ -3,6 +3,8 @@ import { IoMdListBox } from 'react-icons/io'
 import { FaRegWindowClose } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Muestra los enlaces de navegación y, cuando corresponde, el control para cerrar el menú.
@@ -13,10 +15,11 @@ import { ROUTES } from '../constants/routes'
  * @returns Elemento de navegación.
  */
 const Navbar = ({ containerStyles, toggleMenu, menuOpened }) => {
+  const { t } = useTranslation('common')
   const navItems = [
-    { to: ROUTES.HOME, label: 'Home', icon: <TbHomeFilled /> },
-    { to: ROUTES.MENU, label: 'Menu', icon: <IoMdListBox /> },
-    { to: ROUTES.CONTACT, label: 'Contact', icon: <TbHomeFilled /> },
+    { to: ROUTES.HOME, label: t(TRANSLATION_KEYS.common.navigation.home), icon: <TbHomeFilled /> },
+    { to: ROUTES.MENU, label: t(TRANSLATION_KEYS.common.navigation.menu), icon: <IoMdListBox /> },
+    { to: ROUTES.CONTACT, label: t(TRANSLATION_KEYS.common.navigation.contact), icon: <TbHomeFilled /> },
   ]
 
   return (
