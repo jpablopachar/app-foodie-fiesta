@@ -95,53 +95,53 @@
 /* ==================== UTILITIES ==================== */
 
 /* --- Regular --- */
-@utility regular-64 { @apply text-[64px] font-[400] leading-[120%]; }
-@utility regular-52 { @apply text-[52px] font-[400] leading-[120%]; }
-@utility regular-48 { @apply text-[48px] font-[400] leading-[120%]; }
-@utility regular-40 { @apply text-[40px] font-[400] leading-[120%]; }
-@utility regular-32 { @apply text-[32px] font-[400]; }
-@utility regular-28 { @apply text-[28px] font-[400]; }
-@utility regular-24 { @apply text-[24px] font-[400]; }
-@utility regular-22 { @apply text-[22px] font-[400]; }
-@utility regular-20 { @apply text-[20px] font-[400]; }
-@utility regular-18 { @apply text-[18px] font-[400]; }
-@utility regular-16 { @apply text-[16px] font-[400]; }
-@utility regular-15 { @apply text-[15px] font-[400]; }
-@utility regular-14 { @apply text-[14px] font-[400]; }
+@utility regular-64 { @apply text-[64px] font-normal leading-[120%]; }
+@utility regular-52 { @apply text-[52px] font-normal leading-[120%]; }
+@utility regular-48 { @apply text-[48px] font-normal leading-[120%]; }
+@utility regular-40 { @apply text-[40px] font-normal leading-[120%]; }
+@utility regular-32 { @apply text-[32px] font-normal; }
+@utility regular-28 { @apply text-[28px] font-normal; }
+@utility regular-24 { @apply text-[24px] font-normal; }
+@utility regular-22 { @apply text-[22px] font-normal; }
+@utility regular-20 { @apply text-[20px] font-normal; }
+@utility regular-18 { @apply text-[18px] font-normal; }
+@utility regular-16 { @apply text-[16px] font-normal; }
+@utility regular-15 { @apply text-[15px] font-normal; }
+@utility regular-14 { @apply text-[14px] font-normal; }
 
 /* --- Medium --- */
-@utility medium-64 { @apply text-[64px] font-[500] leading-[120%]; }
-@utility medium-52 { @apply text-[52px] font-[500] leading-[120%]; }
-@utility medium-48 { @apply text-[48px] font-[500] leading-[120%]; }
-@utility medium-40 { @apply text-[40px] font-[500] leading-[120%]; }
-@utility medium-36 { @apply text-[36px] font-[500]; }
-@utility medium-32 { @apply text-[32px] font-[500]; }
-@utility medium-28 { @apply text-[28px] font-[500]; }
-@utility medium-24 { @apply text-[24px] font-[500]; }
-@utility medium-22 { @apply text-[22px] font-[500]; }
-@utility medium-20 { @apply text-[20px] font-[500]; }
-@utility medium-18 { @apply text-[18px] font-[500]; }
-@utility medium-16 { @apply text-[16px] font-[500]; }
-@utility medium-15 { @apply text-[15px] font-[500]; }
-@utility medium-14 { @apply text-[14px] font-[500]; }
+@utility medium-64 { @apply text-[64px] font-medium leading-[120%]; }
+@utility medium-52 { @apply text-[52px] font-medium leading-[120%]; }
+@utility medium-48 { @apply text-[48px] font-medium leading-[120%]; }
+@utility medium-40 { @apply text-[40px] font-medium leading-[120%]; }
+@utility medium-36 { @apply text-[36px] font-medium; }
+@utility medium-32 { @apply text-[32px] font-medium; }
+@utility medium-28 { @apply text-[28px] font-medium; }
+@utility medium-24 { @apply text-[24px] font-medium; }
+@utility medium-22 { @apply text-[22px] font-medium; }
+@utility medium-20 { @apply text-[20px] font-medium; }
+@utility medium-18 { @apply text-[18px] font-medium; }
+@utility medium-16 { @apply text-[16px] font-medium; }
+@utility medium-15 { @apply text-[15px] font-medium; }
+@utility medium-14 { @apply text-[14px] font-medium; }
 
 /* --- Bold --- */
-@utility bold-88 { @apply text-[88px] font-[700] leading-[120%]; }
-@utility bold-64 { @apply text-[64px] font-[700] leading-[120%]; }
-@utility bold-52 { @apply text-[52px] font-[700] leading-[120%]; }
-@utility bold-48 { @apply text-[48px] font-[700] leading-[120%]; }
-@utility bold-44 { @apply text-[44px] font-[700] leading-[120%]; }
-@utility bold-40 { @apply text-[40px] font-[700] leading-[120%]; }
-@utility bold-36 { @apply text-[36px] font-[700] leading-[120%]; }
-@utility bold-32 { @apply text-[32px] font-[700] leading-[120%]; }
-@utility bold-28 { @apply text-[28px] font-[700] leading-[120%]; }
-@utility bold-24 { @apply text-[24px] font-[700] leading-[120%]; }
-@utility bold-22 { @apply text-[22px] font-[700]; }
-@utility bold-20 { @apply text-[20px] font-[700]; }
-@utility bold-18 { @apply text-[18px] font-[700]; }
-@utility bold-16 { @apply text-[16px] font-[700]; }
-@utility bold-15 { @apply text-[15px] font-[700]; }
-@utility bold-14 { @apply text-[14px] font-[700]; }
+@utility bold-88 { @apply text-[88px] font-bold leading-[120%]; }
+@utility bold-64 { @apply text-[64px] font-bold leading-[120%]; }
+@utility bold-52 { @apply text-[52px] font-bold leading-[120%]; }
+@utility bold-48 { @apply text-[48px] font-bold leading-[120%]; }
+@utility bold-44 { @apply text-[44px] font-bold leading-[120%]; }
+@utility bold-40 { @apply text-[40px] font-bold leading-[120%]; }
+@utility bold-36 { @apply text-[36px] font-bold leading-[120%]; }
+@utility bold-32 { @apply text-[32px] font-bold leading-[120%]; }
+@utility bold-28 { @apply text-[28px] font-bold leading-[120%]; }
+@utility bold-24 { @apply text-[24px] font-bold leading-[120%]; }
+@utility bold-22 { @apply text-[22px] font-bold; }
+@utility bold-20 { @apply text-[20px] font-bold; }
+@utility bold-18 { @apply text-[18px] font-bold; }
+@utility bold-16 { @apply text-[16px] font-bold; }
+@utility bold-15 { @apply text-[15px] font-bold; }
+@utility bold-14 { @apply text-[14px] font-bold; }
 
 /* --- Buttons --- */
 @utility btn-white {
@@ -166,7 +166,7 @@
 
 /* --- Layout helpers --- */
 @utility max-padd-container {
-  @apply mx-auto max-w-[1440px] px-6 lg:px-12;
+  @apply mx-auto max-w-360 px-6 lg:px-12;
 }
 
 @utility flexCenter {
@@ -186,5 +186,5 @@
 }
 
 @utility active-link {
-  @apply text-secondary relative after:w-1.5 after:h-1.5 after:rounded-full after:bg-secondary after:absolute after:-bottom-2.5 after:left-[7px];
+  @apply text-secondary relative after:w-1.5 after:h-1.5 after:rounded-full after:bg-secondary after:absolute after:-bottom-2.5 after:left-1.75;
 }

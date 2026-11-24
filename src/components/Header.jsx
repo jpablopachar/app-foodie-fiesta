@@ -40,7 +40,7 @@ const Header = () => {
       <div className="max-padd-container flexBetween">
         <Link to={'/'} className="bold-24 flex-1 flex">
           <span className="inline-flex">
-            <span className="inline-flex items-center justify-center p-2 h-8 w-8 bg-secondary text-white -rotate-[31deg] rounded-full">
+            <span className="inline-flex items-center justify-center p-2 h-8 w-8 bg-secondary text-white rotate-[-31deg] rounded-full">
               F
             </span>
             ood
@@ -73,7 +73,7 @@ const Header = () => {
           <div className="group relative">
             <div onClick={() => navigate('/login')}>
               {token ? (
-                <div className="my-[9px]">
+                <div className="my-2.25">
                   <TbUserCircle className="text-[29px] cursor-pointer" />
                 </div>
               ) : (

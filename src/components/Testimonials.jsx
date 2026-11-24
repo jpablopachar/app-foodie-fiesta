@@ -99,7 +99,7 @@ const Testimonials = () => {
                     Verified
                   </div>
                 </div>
-                <hr className="h-[1px] w-full my-2 border-gray-200" />
+                <hr className="h-px w-full my-2 border-gray-200" />
                 <div className="flex gap-x-1 text-secondary mt-5 mb-1 text-xs">
                   <FaStar />
                   <FaStar />
