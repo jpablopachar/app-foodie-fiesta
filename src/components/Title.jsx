@@ -1,3 +1,13 @@
+/**
+ * Muestra un título compuesto por dos partes y una descripción opcional.
+ *
+ * @param title1 - Primera parte del título.
+ * @param title2 - Segunda parte del título, resaltada visualmente.
+ * @param titleStyles - Clases CSS aplicadas al contenedor del título.
+ * @param title1Styles - Clases CSS aplicadas al encabezado.
+ * @param paraStyles - Clases CSS aplicadas a la descripción.
+ * @returns Bloque de título y descripción.
+ */
 const Title = ({ title1, title2, titleStyles, title1Styles, paraStyles }) => {
   return (
     <div className={`${titleStyles} pb-1`}>

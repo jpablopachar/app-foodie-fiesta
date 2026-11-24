@@ -1,22 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from './Title'
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
-// Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Autoplay, Pagination } from 'swiper/modules'
 import Item from './Item'
 
+/**
+ * Filtra y muestra los alimentos populares en un carrusel automático.
+ *
+ * @returns Sección con el carrusel de alimentos populares.
+ */
 const PopularFoods = () => {
   const { foods } = useContext(ShopContext)
   const [popularFoods, setPopularFoods] = useState([])
 
   useEffect(() => {
     const data = foods.filter((item) => item.popular)
+
     setPopularFoods(data.slice(0, 6))
   }, [foods])
+
   return (
     <section className="max-padd-container pt-16">
       <Title
@@ -25,7 +30,6 @@ const PopularFoods = () => {
         titleStyles={'text-center pb-16!'}
         paraStyles={'block!'}
       />
-      {/* Swiper Container */}
       <Swiper
         autoplay={{
           delay: 3500,

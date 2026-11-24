@@ -1,13 +1,15 @@
-import React from 'react'
 import Title from './Title'
 import { FaCheck, FaStar } from 'react-icons/fa6'
 import user1 from '../assets/testimonials/user1.png'
-import user2 from '../assets/testimonials/user2.png'
 import food1 from '../assets/food_1.png'
 import food2 from '../assets/food_2.png'
-import food3 from '../assets/food_12.png'
-import food4 from '../assets/food_44.png'
 
+/**
+ * Muestra reseñas verificadas de clientes junto con sus valoraciones
+ * y ejemplos de alimentos.
+ *
+ * @returns Sección de testimonios de clientes.
+ */
 const Testimonials = () => {
   return (
     <div>
@@ -19,9 +21,7 @@ const Testimonials = () => {
           paraStyles={'block!'}
         />
         <div className="max-padd-container">
-          {/* Container */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_3fr] gap-20 mb-16 rounded-2xl">
-            {/* Left side */}
             <div className="hidden sm:flex items-start justify-between flex-col gap-10">
               <Title
                 title1={'What People'}
@@ -42,9 +42,7 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-            {/* Right Side - Reviews */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-7">
-              {/* Review Card */}
               <div className="flex flex-col gap-1 rounded-lg p-4 bg-deep">
                 <div className="flexBetween">
                   <div className="flexBetween gap-x-2">

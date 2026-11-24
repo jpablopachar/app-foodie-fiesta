@@ -4,6 +4,11 @@ import hot from '../assets/hot-food.svg'
 import fresh from '../assets/fresh-food.svg'
 import hat from '../assets/hat-chef.svg'
 
+/**
+ * Muestra las principales ventajas de elegir el servicio de Foodessa.
+ *
+ * @returns Sección con las características destacadas del servicio.
+ */
 const Features = () => {
   return (
     <section className="max-padd-container py-16 xl:py-28 pb-12!">

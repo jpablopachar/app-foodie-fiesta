@@ -1,7 +1,12 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from '../assets/data'
 
+/**
+ * Muestra el pie de página con la suscripción, los enlaces informativos,
+ * los datos de contacto y las redes sociales.
+ *
+ * @returns Pie de página de la aplicación.
+ */
 const Footer = () => {
   return (
     <footer className="mb-4">
@@ -12,13 +17,11 @@ const Footer = () => {
           flavors. Enjoy a delicious journey.
         </p>
         <hr className="my-8 bg-slate-900/30 h-0.5 border-gray-200" />
-        {/* container */}
         <div
           className="flex justify-between flex-wrap gap-2
                 "
         >
           <div className="max-w-sm">
-            {/* logo */}
             <Link to={'/'} className="bold-24 flex-1 flex ">
               <span className="inline-flex">
                 <span className="inline-flex items-center justify-center p-2 h-8 w-8 bg-secondary text-white rotate-[-31deg] rounded-full">
@@ -87,6 +90,13 @@ const Footer = () => {
 
 export default Footer
 
+/**
+ * Renderiza una columna del pie de página con un título y su contenido.
+ *
+ * @param title - Título de la columna.
+ * @param children - Contenido que se muestra debajo del título.
+ * @returns Columna formateada del pie de página.
+ */
 const FooterColumn = ({ title, children }) => {
   return (
     <div className="flex flex-col gap-5">

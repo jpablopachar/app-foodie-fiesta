@@ -3,6 +3,13 @@ import { FaStar, FaStarHalfStroke } from 'react-icons/fa6'
 import { TbShoppingBagPlus } from 'react-icons/tb'
 import { ShopContext } from '../context/ShopContext'
 
+/**
+ * Muestra la información de un alimento y permite seleccionar su tamaño
+ * para añadirlo al carrito.
+ *
+ * @param food - Alimento que se va a mostrar.
+ * @returns Tarjeta con los datos, tamaños, precio y acción de compra del alimento.
+ */
 const Item = ({ food }) => {
   const { currency, addToCart } = useContext(ShopContext)
 
