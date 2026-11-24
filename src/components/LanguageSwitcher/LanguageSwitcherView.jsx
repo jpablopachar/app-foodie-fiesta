@@ -1,3 +1,12 @@
+/**
+ * Muestra un selector con los idiomas disponibles y notifica los cambios.
+ *
+ * @param {string} language - Código del idioma seleccionado.
+ * @param {{value: string, label: string}[]} options - Códigos y etiquetas de los idiomas disponibles.
+ * @param {string} label - Etiqueta accesible del selector.
+ * @param {(language: string) => void} onLanguageChange - Función que recibe el idioma seleccionado.
+ * @returns Elemento de selección de idioma.
+ */
 const LanguageSwitcherView = ({
   language,
   options,

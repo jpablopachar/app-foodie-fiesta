@@ -1,4 +1,9 @@
+/**
+ * Claves de traducción agrupadas por espacio de nombres y sección de la aplicación.
+ * Cada valor corresponde a una clave utilizada para consultar los recursos de i18n.
+ */
 export const TRANSLATION_KEYS = {
+  /** Textos compartidos entre las distintas páginas. */
   common: {
     navigation: {
       home: 'navigation.home',
@@ -25,6 +30,7 @@ export const TRANSLATION_KEYS = {
       rightsReserved: 'footer.rightsReserved',
     },
   },
+  /** Textos de la página principal. */
   home: {
     hero: {
       titleBefore: 'hero.titleBefore',
@@ -84,6 +90,7 @@ export const TRANSLATION_KEYS = {
       socialTitle: 'footer.socialTitle',
     },
   },
+  /** Textos de autenticación. */
   auth: {
     login: {
       title: 'login.title',
