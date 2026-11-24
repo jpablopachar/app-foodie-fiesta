@@ -46,7 +46,7 @@ const Item = ({ food }) => {
                   <button
                     onClick={() => setSize(item)}
                     key={i}
-                    className={`${item === size ? 'ring-1 ring-slate-900/10' : ''} h-6 w-6 bg-light text-xs font-semibold rounded-sm`}
+                    className={`${item === size ? 'ring-1 ring-slate-900/10' : ''} h-6 w-6 bg-light text-xs font-semibold rounded-xs`}
                   >
                     {item}
                   </button>
@@ -54,7 +54,7 @@ const Item = ({ food }) => {
             </div>
             <button
               onClick={() => addToCart(food._id, size)}
-              className="flexCenter gap-x-1 text-[18px] bg-secondary text-white rounded-sm p-[3px]"
+              className="flexCenter gap-x-1 text-[18px] bg-secondary text-white rounded-xs p-[3px]"
             >
               <TbShoppingBagPlus />
             </button>

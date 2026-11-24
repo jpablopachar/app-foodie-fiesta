@@ -9,18 +9,18 @@ import { ROUTES } from './constants/routes'
 function App() {
   return (
     <>
-      <main className="overflow-hidden bg-light text-[#404040]">
+      <main className="overflow-hidden bg-light text-tertiary">
         <ToastContainer />
         <Header />
         <Routes>
           <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.HOME} element={<Home />} />
           {/* <Route path="/menu" element={<Menu />}/>
-        <Route path="/contact" element={<Contact />}/>
-        <Route path="/cart" element={<Cart />}/>
-        <Route path="/place-order" element={<PlaceOrder />}/>
-        <Route path="/orders" element={<Orders />}/>
-        <Route path="/verify" element={<Verify />}/> */}
+          <Route path="/contact" element={<Contact />}/>
+          <Route path="/cart" element={<Cart />}/>
+          <Route path="/place-order" element={<PlaceOrder />}/>
+          <Route path="/orders" element={<Orders />}/>
+          <Route path="/verify" element={<Verify />}/> */}
         </Routes>
       </main>
     </>

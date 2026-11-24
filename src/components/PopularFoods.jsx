@@ -22,8 +22,8 @@ const PopularFoods = () => {
       <Title
         title1={'POPULAR'}
         title2={'FOODS'}
-        titleStyles={'text-center !pb-16'}
-        paraStyles={'!block'}
+        titleStyles={'text-center pb-16!'}
+        paraStyles={'block!'}
       />
       {/* Swiper Container */}
       <Swiper

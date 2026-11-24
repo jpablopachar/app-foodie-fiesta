@@ -94,7 +94,7 @@ const Login = () => {
                   value={name}
                   type="text"
                   placeholder="Name"
-                  className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded bg-primary mt-1"
+                  className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded-sm bg-primary mt-1"
                 />
               </div>
             )}
@@ -107,7 +107,7 @@ const Login = () => {
                 value={email}
                 type="email"
                 placeholder="Email"
-                className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded bg-primary mt-1"
+                className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded-sm bg-primary mt-1"
               />
             </div>
             <div className="w-full">
@@ -119,10 +119,10 @@ const Login = () => {
                 value={password}
                 type="password"
                 placeholder="Password"
-                className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded bg-primary mt-1"
+                className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded-sm bg-primary mt-1"
               />
             </div>
-            <button type="submit" className="btn-dark w-full mt-5 !py-[7px] !rounded">
+            <button type="submit" className="btn-dark w-full mt-5 py-[7px]! rounded-sm!">
               {currentState === STATES.SIGN_UP ? STATES.SIGN_UP : STATES.LOGIN}
             </button>
             <div className="w-full flex flex-col gap-y-3 medium-14">

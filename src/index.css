@@ -2,11 +2,20 @@
 
 @import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", system-ui;
+@layer base {
+  html {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-400);
+  }
 }
 
 /* Scrollbar */
@@ -47,9 +56,9 @@
   --color-gray-90: #141414;
 
   /* Breakpoints */
-  --breakpoint-xs: 400px;
-  --breakpoint-3xl: 1680px;
-  --breakpoint-4xl: 2200px;
+  --breakpoint-xs: 25rem;
+  --breakpoint-3xl: 105rem;
+  --breakpoint-4xl: 137.5rem;
 
   /* Background images */
   --background-image-hero: url(/src/assets/bg.png);

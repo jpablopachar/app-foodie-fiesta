@@ -66,7 +66,7 @@ const Header = () => {
           )}
           <Link to={'/cart'} className="flex relative">
             <RiShoppingBasketLine className="text-2xl" />
-            <span className="bg-secondary text-white medium-14 absolute left-3.5 -top-2.5 flexCenter w-4 h-4 rounded-full shadow-inner">
+            <span className="bg-secondary text-white medium-14 absolute left-3.5 -top-2.5 flexCenter w-4 h-4 rounded-full inset-shadow-sm">
               {getCartCount()}
             </span>
           </Link>
@@ -77,19 +77,19 @@ const Header = () => {
                   <TbUserCircle className="text-[29px] cursor-pointer" />
                 </div>
               ) : (
-                <button className="btn-outline !border-none flexCenter gap-x-2 !py-3">
+                <button className="btn-outline border-none! flexCenter gap-x-2 py-3!">
                   Login <RiUserLine className="text-xl" />
                 </button>
               )}
             </div>
             {token && (
               <>
-                <ul className="bg-white shadow-sm p-2 w-32 ring-1 ring-slate-900/15 rounded absolute right-0 top-10 hidden group-hover:flex flex-col">
+                <ul className="bg-white shadow-xs p-2 w-32 ring-1 ring-slate-900/15 rounded-sm absolute right-0 top-10 hidden group-hover:flex flex-col">
                   <li onClick={() => navigate('/orders')} className="flexBetween cursor-pointer">
                     <p>Orders</p>
                     <TbArrowNarrowRight className="opacity-50 text-[19px]" />
                   </li>
-                  <hr className="my-2" />
+                  <hr className="my-2 border-gray-200" />
                   <li onClick={logout} className="flexBetween cursor-pointer">
                     <p>Logout</p>
                     <TbArrowNarrowRight className="opacity-50 text-[19px]" />

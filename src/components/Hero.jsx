@@ -38,7 +38,7 @@ const Hero = () => {
           <div className="relative">
             <img src={bg} alt="" height={666} width={666} />
             {/* Badge */}
-            <div className="hidden sm:block absolute top-8 right-14 max-w-48 bg-light shadow-sm pl-2 py-2 rounded-xl">
+            <div className="hidden sm:block absolute top-8 right-14 max-w-48 bg-light shadow-xs pl-2 py-2 rounded-xl">
               <div className="flex gap-2">
                 <TbTruckDelivery size={31} className="text-secondary" />
                 <h5 className="h5 relative top-1">Fast Delivery</h5>
@@ -46,14 +46,14 @@ const Hero = () => {
               <p className="text-xs">Fresh, hot meals at your doorstep.</p>
             </div>
             {/* Badge */}
-            <div className="hidden sm:block absolute top-52 right-6 max-w-60 bg-light shadow-sm p-2 rounded-xl">
+            <div className="hidden sm:block absolute top-52 right-6 max-w-60 bg-light shadow-xs p-2 rounded-xl">
               <div className="flex gap-2">
                 <IoMdRestaurant size={26} className="text-secondary" />
                 <h5 className="h5">99+ Dishes</h5>
               </div>
             </div>
             {/* Badge */}
-            <div className="hidden sm:block absolute top-3/4 right-12 max-w-48 bg-light shadow-sm pl-2 py-2 rounded-xl">
+            <div className="hidden sm:block absolute top-3/4 right-12 max-w-48 bg-light shadow-xs pl-2 py-2 rounded-xl">
               <div className="flex gap-2">
                 <AiFillShop size={23} className="text-secondary" />
                 <h5 className="h5">200+ Branches</h5>
@@ -61,7 +61,7 @@ const Hero = () => {
               <p className="text-xs">Bringing great food closer to you</p>
             </div>
             {/* Badge */}
-            <div className="hidden sm:block absolute top-28 left-3 max-w-48 bg-light shadow-sm pl-2 py-2 rounded-xl">
+            <div className="hidden sm:block absolute top-28 left-3 max-w-48 bg-light shadow-xs pl-2 py-2 rounded-xl">
               <div className="flex gap-2">
                 <IoPeopleCircleOutline size={31} className="text-secondary" />
                 <h5 className="h5 relative top-1">Happy Customers</h5>
@@ -69,7 +69,7 @@ const Hero = () => {
               <p className="text-xs">Serving smiles with every delicious bite.</p>
             </div>
             {/* Badge */}
-            <div className="hidden sm:block absolute top-72 left-3 max-w-48 bg-light shadow-sm p-2 rounded-xl">
+            <div className="hidden sm:block absolute top-72 left-3 max-w-48 bg-light shadow-xs p-2 rounded-xl">
               <div className="flex gap-2">
                 <PiChefHatFill size={27} className="text-secondary" />
                 <h5 className="h5 relative top-1">Expert Cooks</h5>

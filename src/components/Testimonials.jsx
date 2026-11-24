@@ -15,8 +15,8 @@ const Testimonials = () => {
         <Title
           title1={'DELICIOUS'}
           title2={'REVIEWS'}
-          titleStyles={'text-center !pb-16'}
-          paraStyles={'!block'}
+          titleStyles={'text-center pb-16!'}
+          paraStyles={'block!'}
         />
         <div className="max-padd-container">
           {/* Container */}
@@ -27,9 +27,9 @@ const Testimonials = () => {
                 title1={'What People'}
                 title2={'Says'}
                 title1Styles={'pb-10'}
-                paraStyles={'!block'}
+                paraStyles={'block!'}
               />
-              <div className="flex flex-col gap-1 bg-deep p-2 rounded">
+              <div className="flex flex-col gap-1 bg-deep p-2 rounded-sm">
                 <div className="flex text-secondary gap-2">
                   <FaStar />
                   <FaStar />
@@ -56,7 +56,7 @@ const Testimonials = () => {
                     Verified
                   </div>
                 </div>
-                <hr className="h-[1px] w-full my-2" />
+                <hr className="h-[1px] w-full my-2 border-gray-200" />
                 <div className="flex gap-x-1 text-secondary mt-5 mb-1 text-xs">
                   <FaStar />
                   <FaStar />
@@ -76,14 +76,14 @@ const Testimonials = () => {
                     alt=""
                     height={44}
                     width={44}
-                    className="rounded aspect-square object-cover"
+                    className="rounded-sm aspect-square object-cover"
                   />
                   <img
                     src={food2}
                     alt=""
                     height={44}
                     width={44}
-                    className="rounded aspect-square object-cover"
+                    className="rounded-sm aspect-square object-cover"
                   />
                 </div>
               </div>
@@ -99,7 +99,7 @@ const Testimonials = () => {
                     Verified
                   </div>
                 </div>
-                <hr className="h-[1px] w-full my-2" />
+                <hr className="h-[1px] w-full my-2 border-gray-200" />
                 <div className="flex gap-x-1 text-secondary mt-5 mb-1 text-xs">
                   <FaStar />
                   <FaStar />
@@ -119,14 +119,14 @@ const Testimonials = () => {
                     alt=""
                     height={44}
                     width={44}
-                    className="rounded aspect-square object-cover"
+                    className="rounded-sm aspect-square object-cover"
                   />
                   <img
                     src={food2}
                     alt=""
                     height={44}
                     width={44}
-                    className="rounded aspect-square object-cover"
+                    className="rounded-sm aspect-square object-cover"
                   />
                 </div>
               </div>

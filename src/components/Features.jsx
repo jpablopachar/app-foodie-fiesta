@@ -6,12 +6,12 @@ import hat from '../assets/hat-chef.svg'
 
 const Features = () => {
   return (
-    <section className="max-padd-container py-16 xl:py-28 !pb-12">
+    <section className="max-padd-container py-16 xl:py-28 pb-12!">
       <Title
         title1={'WHY CHOOSE'}
         title2={'US'}
-        titleStyles={'text-center !pb-16'}
-        paraStyles={'!block'}
+        titleStyles={'text-center pb-16!'}
+        paraStyles={'block!'}
       />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 gap-y-12">
         <div className="flexCenter flex-col gap-3 bg-deep p-4 py-8 rounded-xl">
