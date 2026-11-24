@@ -1,8 +1,24 @@
 import Title from './Title'
-import { FaCheck, FaStar } from 'react-icons/fa6'
+import TestimonialCard from './TestimonialCard'
+import { FaStar } from 'react-icons/fa6'
 import user1 from '../assets/testimonials/user1.png'
 import food1 from '../assets/food_1.png'
 import food2 from '../assets/food_2.png'
+
+const reviews = [
+  {
+    name: 'John Doe',
+    title: 'High Quality',
+    description:
+      'The food was absolutely delicious! Every bite was bursting with flavor, and the quality was top-notch. The service was quick, and everything arrived fresh. Highly recommend trying it out!',
+  },
+  {
+    name: 'Izabella Stress',
+    title: 'Tasty Flavour',
+    description:
+      'Amazing experience! The meals were perfectly cooked, and the flavors blended beautifully. The delivery was on time, and the packaging kept everything warm. Will definitely order again!',
+  },
+]
 
 /**
  * Muestra reseñas verificadas de clientes junto con sus valoraciones
@@ -31,11 +47,9 @@ const Testimonials = () => {
               />
               <div className="flex flex-col gap-1 bg-deep p-2 rounded-sm">
                 <div className="flex text-secondary gap-2">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <FaStar key={index} />
+                  ))}
                 </div>
                 <div className="medium-14">
                   more than <b>+25,000 reviews</b>
@@ -43,91 +57,14 @@ const Testimonials = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-7">
-              <div className="flex flex-col gap-1 rounded-lg p-4 bg-deep">
-                <div className="flexBetween">
-                  <div className="flexBetween gap-x-2">
-                    <img src={user1} alt="" height={44} width={44} className="rounded-full" />
-                    <h5 className="bold-14">John Doe</h5>
-                  </div>
-                  <div className="bg-secondary text-white rounded-full flexCenter gap-x-2 p-1 px-2 text-xs font-semibold">
-                    <FaCheck />
-                    Verified
-                  </div>
-                </div>
-                <hr className="h-px w-full my-2 border-gray-200" />
-                <div className="flex gap-x-1 text-secondary mt-5 mb-1 text-xs">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                </div>
-                <h4 className="h4">High Quality</h4>
-                <p>
-                  The food was absolutely delicious! Every bite was bursting with flavor, and the
-                  quality was top-notch. The service was quick, and everything arrived fresh. Highly
-                  recommend trying it out!
-                </p>
-                <div className="flex mt-5">
-                  <img
-                    src={food1}
-                    alt=""
-                    height={44}
-                    width={44}
-                    className="rounded-sm aspect-square object-cover"
-                  />
-                  <img
-                    src={food2}
-                    alt=""
-                    height={44}
-                    width={44}
-                    className="rounded-sm aspect-square object-cover"
-                  />
-                </div>
-              </div>
-              {/* Review Card */}
-              <div className="flex flex-col gap-1 rounded-lg p-4 bg-deep">
-                <div className="flexBetween">
-                  <div className="flexBetween gap-x-2">
-                    <img src={user1} alt="" height={44} width={44} className="rounded-full" />
-                    <h5 className="bold-14">Izabella Stress</h5>
-                  </div>
-                  <div className="bg-secondary text-white rounded-full flexCenter gap-x-2 p-1 px-2 text-xs font-semibold">
-                    <FaCheck />
-                    Verified
-                  </div>
-                </div>
-                <hr className="h-px w-full my-2 border-gray-200" />
-                <div className="flex gap-x-1 text-secondary mt-5 mb-1 text-xs">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                </div>
-                <h4 className="h4">Tasty Flavour</h4>
-                <p>
-                  Amazing experience! The meals were perfectly cooked, and the flavors blended
-                  beautifully. The delivery was on time, and the packaging kept everything warm.
-                  Will definitely order again!
-                </p>
-                <div className="flex mt-5">
-                  <img
-                    src={food1}
-                    alt=""
-                    height={44}
-                    width={44}
-                    className="rounded-sm aspect-square object-cover"
-                  />
-                  <img
-                    src={food2}
-                    alt=""
-                    height={44}
-                    width={44}
-                    className="rounded-sm aspect-square object-cover"
-                  />
-                </div>
-              </div>
+              {reviews.map((review) => (
+                <TestimonialCard
+                  key={review.name}
+                  {...review}
+                  userImage={user1}
+                  foodImages={[food1, food2]}
+                />
+              ))}
             </div>
           </div>
         </div>
