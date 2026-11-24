@@ -47,6 +47,7 @@ const Item = ({ food }) => {
               {[...food.sizes]
                 .sort((a, b) => {
                   const order = ['H', 'F', 'S', 'M', 'L', 'XL']
+
                   return order.indexOf(a) - order.indexOf(b)
                 })
                 .map((item, i) => (

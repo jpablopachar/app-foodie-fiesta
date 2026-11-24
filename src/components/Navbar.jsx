@@ -2,6 +2,7 @@ import { TbHomeFilled } from 'react-icons/tb'
 import { IoMdListBox } from 'react-icons/io'
 import { FaRegWindowClose } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
+import { ROUTES } from '../constants/routes'
 
 /**
  * Muestra los enlaces de navegación y, cuando corresponde, el control para cerrar el menú.
@@ -13,9 +14,9 @@ import { Link, NavLink } from 'react-router-dom'
  */
 const Navbar = ({ containerStyles, toggleMenu, menuOpened }) => {
   const navItems = [
-    { to: '/', label: 'Home', icon: <TbHomeFilled /> },
-    { to: '/menu', label: 'Menu', icon: <IoMdListBox /> },
-    { to: '/contact', label: 'Contact', icon: <TbHomeFilled /> },
+    { to: ROUTES.HOME, label: 'Home', icon: <TbHomeFilled /> },
+    { to: ROUTES.MENU, label: 'Menu', icon: <IoMdListBox /> },
+    { to: ROUTES.CONTACT, label: 'Contact', icon: <TbHomeFilled /> },
   ]
 
   return (
@@ -26,7 +27,7 @@ const Navbar = ({ containerStyles, toggleMenu, menuOpened }) => {
             onClick={toggleMenu}
             className="text-xl self-end cursor-pointer relative left-8"
           />
-          <Link to={'/'} className="bold-24 mb-10">
+          <Link to={ROUTES.HOME} className="bold-24 mb-10">
             <h4 className="text-secondary">Foodessa</h4>
           </Link>
         </>

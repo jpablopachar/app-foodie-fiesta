@@ -6,6 +6,7 @@ import { TbUserCircle, TbArrowNarrowRight } from 'react-icons/tb'
 import { CgMenuLeft } from 'react-icons/cg'
 import { ShopContext } from '../context/ShopContext'
 import { removeStoredToken } from '../utils/storage'
+import { ROUTES } from '../constants/routes'
 
 /**
  * Muestra el encabezado con la navegación, el acceso al carrito y las opciones de usuario.
@@ -28,7 +29,7 @@ const Header = () => {
    * Cierra la sesión y redirige al usuario a la página de inicio de sesión.
    */
   const logout = () => {
-    navigate('/login')
+    navigate(ROUTES.LOGIN)
 
     removeStoredToken()
 
@@ -38,7 +39,7 @@ const Header = () => {
   return (
     <header className="py-3 w-full absolute top-0 left-0 right-0 z-50 bg-white">
       <div className="max-padd-container flexBetween">
-        <Link to={'/'} className="bold-24 flex-1 flex">
+        <Link to={ROUTES.HOME} className="bold-24 flex-1 flex">
           <span className="inline-flex">
             <span className="inline-flex items-center justify-center p-2 h-8 w-8 bg-secondary text-white rotate-[-31deg] rounded-full">
               F
@@ -64,14 +65,14 @@ const Header = () => {
               cursor-pointer"
             />
           )}
-          <Link to={'/cart'} className="flex relative">
+          <Link to={ROUTES.CART} className="flex relative">
             <RiShoppingBasketLine className="text-2xl" />
             <span className="bg-secondary text-white medium-14 absolute left-3.5 -top-2.5 flexCenter w-4 h-4 rounded-full inset-shadow-sm">
               {getCartCount()}
             </span>
           </Link>
           <div className="group relative">
-            <div onClick={() => navigate('/login')}>
+            <div onClick={() => navigate(ROUTES.LOGIN)}>
               {token ? (
                 <div className="my-2.25">
                   <TbUserCircle className="text-[29px] cursor-pointer" />

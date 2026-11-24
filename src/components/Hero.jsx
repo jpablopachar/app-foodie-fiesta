@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ROUTES } from '../constants/routes'
 import bg from '../assets/bg.png'
 import { TbTruckDelivery } from 'react-icons/tb'
 import { IoPeopleCircleOutline } from 'react-icons/io5'
@@ -33,7 +34,7 @@ const Hero = () => {
             modern delights, find the perfect meal for every moment.
           </p>
           <div className="mt-6">
-            <Link to={'/menu'} className="btn-secondary">
+            <Link to={ROUTES.MENU} className="btn-secondary">
               Explore Now
             </Link>
           </div>

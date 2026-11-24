@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FOOTER_CONTACT_INFO, FOOTER_LINKS, SOCIALS } from '../assets/data'
+import { ROUTES } from '../constants/routes'
 
 /**
  * Muestra el pie de página con la suscripción, los enlaces informativos,
@@ -22,7 +23,7 @@ const Footer = () => {
                 "
         >
           <div className="max-w-sm">
-            <Link to={'/'} className="bold-24 flex-1 flex ">
+            <Link to={ROUTES.HOME} className="bold-24 flex-1 flex ">
               <span className="inline-flex">
                 <span className="inline-flex items-center justify-center p-2 h-8 w-8 bg-secondary text-white rotate-[-31deg] rounded-full">
                   F
@@ -49,7 +50,7 @@ const Footer = () => {
               <FooterColumn key={col.title} title={col.title}>
                 <ul className="flex flex-col gap-4 regular-14 text-gray-20">
                   {col.links.map((link) => (
-                    <Link to="/" key={link}>
+                    <Link to={ROUTES.HOME} key={link}>
                       {link}
                     </Link>
                   ))}
@@ -59,7 +60,7 @@ const Footer = () => {
             <div className="flex flex-col gap-5">
               <FooterColumn title={FOOTER_CONTACT_INFO.title}>
                 {FOOTER_CONTACT_INFO.links.map((link) => (
-                  <Link to="/" key={link.label} className="flex gap-4 md:flex-col lg:flex-row">
+                  <Link to={ROUTES.HOME} key={link.label} className="flex gap-4 md:flex-col lg:flex-row">
                     <p>{link.label}:</p>
                     <p className="bold-15">{link.value}</p>
                   </Link>
@@ -70,7 +71,7 @@ const Footer = () => {
               <FooterColumn title={SOCIALS.title}>
                 <ul className="flex gap-4">
                   {SOCIALS.links.map((link) => (
-                    <Link to="/" key={link.id} className="text-xl">
+                    <Link to={ROUTES.HOME} key={link.id} className="text-xl">
                       {link.icon}
                     </Link>
                   ))}
