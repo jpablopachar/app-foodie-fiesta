@@ -12,10 +12,10 @@ const Hero = () => {
       <div className="flexCenter gap-6 flex-col xl:flex-row">
         {/* Left side */}
         <div className="flex flex-1 flex-col pt-12 xl:pt-32">
-          <h1 className="h1 max-w-[46rem]">
+          <h1 className="h1 max-w-184">
             Grab Exclusive{' '}
             <span className="inline-flex">
-              <span className="inline-flex items-center justify-center p-5 h-16 w-16 bg-secondary text-white -rotate-[31deg] rounded-full">
+              <span className="inline-flex items-center justify-center p-5 h-16 w-16 bg-secondary text-white rotate-[-31deg] rounded-full">
                 F
               </span>
               ood

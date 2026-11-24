@@ -11,7 +11,7 @@ const Footer = () => {
           Experience a variety of dishes made with the freshest ingredients and bold, authentic
           flavors. Enjoy a delicious journey.
         </p>
-        <hr className="my-8 bg-slate-900/30 h-[2px] border-gray-200" />
+        <hr className="my-8 bg-slate-900/30 h-0.5 border-gray-200" />
         {/* container */}
         <div
           className="flex justify-between flex-wrap gap-2
@@ -21,7 +21,7 @@ const Footer = () => {
             {/* logo */}
             <Link to={'/'} className="bold-24 flex-1 flex ">
               <span className="inline-flex">
-                <span className="inline-flex items-center justify-center p-2 h-8 w-8 bg-secondary text-white -rotate-[31deg] rounded-full">
+                <span className="inline-flex items-center justify-center p-2 h-8 w-8 bg-secondary text-white rotate-[-31deg] rounded-full">
                   F
                 </span>
                 ood
@@ -32,7 +32,7 @@ const Footer = () => {
               Looking for something delicious? Explore a variety of mouthwatering meals, crafted to
               satisfy your cravings and bring joy to every occasion
             </p>
-            <div className="flexBetween pl-3 h-[3rem] bg-deep w-full max-w-[333px] rounded-full ring-1 ring-slate-500/15 mb-4">
+            <div className="flexBetween pl-3 h-12 bg-deep w-full max-w-83.25 rounded-full ring-1 ring-slate-500/15 mb-4">
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -77,7 +77,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* copyrights */}
       <p className="text-white bg-secondary medium-14 py-2 px-8 rounded-sm flexBetween ">
         <span>2025 Foodessa</span>
         <span>All rights reserved</span>

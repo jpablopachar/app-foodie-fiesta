@@ -122,7 +122,7 @@ const Login = () => {
                 className="w-full px-3 py-1 ring-1 ring-slate-900/10 rounded-sm bg-primary mt-1"
               />
             </div>
-            <button type="submit" className="btn-dark w-full mt-5 py-[7px]! rounded-sm!">
+            <button type="submit" className="btn-dark w-full mt-5 py-1.75! rounded-sm!">
               {currentState === STATES.SIGN_UP ? STATES.SIGN_UP : STATES.LOGIN}
             </button>
             <div className="w-full flex flex-col gap-y-3 medium-14">

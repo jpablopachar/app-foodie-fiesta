@@ -11,7 +11,7 @@ const Item = ({ food }) => {
   return (
     <div>
       <div className="flex rounded-xl bg-deep relative">
-        <div className="flexCenter m-6 rounded-full absolute top-0 bottom-0 -left-[88px]">
+        <div className="flexCenter m-6 rounded-full absolute top-0 bottom-0 -left-22">
           <img
             src={food.image}
             alt=""
@@ -54,7 +54,7 @@ const Item = ({ food }) => {
             </div>
             <button
               onClick={() => addToCart(food._id, size)}
-              className="flexCenter gap-x-1 text-[18px] bg-secondary text-white rounded-xs p-[3px]"
+              className="flexCenter gap-x-1 text-[18px] bg-secondary text-white rounded-xs p-0.75"
             >
               <TbShoppingBagPlus />
             </button>
@@ -62,12 +62,12 @@ const Item = ({ food }) => {
           <div className="flexBetween rounded-xl pb-3 text-[13px] font-semibold">
             <div className="flexBetween gap-1">
               <h5>Prep:</h5>
-              <p className="text-xs relative top-[1px]">20m</p>
+              <p className="text-xs relative top-px">20m</p>
             </div>
-            <hr className="h-4 w-[1px] bg-tertiary/10 border-none" />
+            <hr className="h-4 w-px bg-tertiary/10 border-none" />
             <div className="flexCenter gap-1">
               <h5>Price:</h5>
-              <p className="text-xs text-secondary relative top-[1px]">
+              <p className="text-xs text-secondary relative top-px">
                 {currency}
                 {food.price[size]}
               </p>

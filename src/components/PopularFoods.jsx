@@ -49,7 +49,7 @@ const PopularFoods = () => {
           },
         }}
         modules={[Autoplay, Pagination]}
-        className="h-[255px]"
+        className="h-63.75"
       >
         {popularFoods.map((food) => (
           <SwiperSlide key={food._id} className="pl-16">
