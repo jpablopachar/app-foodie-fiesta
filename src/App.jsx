@@ -6,6 +6,12 @@ import Login from './pages/Login'
 import Home from './pages/Home'
 import { ROUTES } from './constants/routes'
 import DocumentLanguage from './components/DocumentLanguage'
+import Menu from './pages/Menu'
+import Contact from './pages/Contact'
+import Cart from './pages/Cart'
+import PlaceOrder from './pages/PlaceOrder'
+import Orders from './pages/Orders'
+import Verify from './pages/Verify'
 
 function App() {
   return (
@@ -17,12 +23,12 @@ function App() {
         <Routes>
           <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.HOME} element={<Home />} />
-          {/* <Route path="/menu" element={<Menu />}/>
+          <Route path="/menu" element={<Menu />}/>
           <Route path="/contact" element={<Contact />}/>
           <Route path="/cart" element={<Cart />}/>
           <Route path="/place-order" element={<PlaceOrder />}/>
           <Route path="/orders" element={<Orders />}/>
-          <Route path="/verify" element={<Verify />}/> */}
+          <Route path="/verify" element={<Verify />}/>
         </Routes>
       </main>
     </>
