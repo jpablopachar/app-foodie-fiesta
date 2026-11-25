@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SORT_TYPES } from '../constants/shop'
 
 /**
  * Gestiona la búsqueda, los filtros, el orden y la paginación del menú.
@@ -7,7 +8,7 @@ import { useState } from 'react'
  */
 export const useFoodFilters = (foods) => {
   const [category, setCategory] = useState([])
-  const [sortType, setSortType] = useState('relevant')
+  const [sortType, setSortType] = useState(SORT_TYPES.RELEVANT)
   const [search, setSearch] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 10
@@ -34,10 +35,10 @@ export const useFoodFilters = (foods) => {
     (!category.length || category.includes(food.category)),
   )
 
-  if (sortType === 'low' || sortType === 'high') {
+  if (sortType === SORT_TYPES.LOW || sortType === SORT_TYPES.HIGH) {
     filtered.sort((a, b) => {
       const difference = Object.values(a.price)[0] - Object.values(b.price)[0]
-      return sortType === 'low' ? difference : -difference
+      return sortType === SORT_TYPES.LOW ? difference : -difference
     })
   }
 

@@ -8,6 +8,7 @@ import Item from '../components/Item'
 import { useFoodFilters } from '../hooks/useFoodFilters'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATION_KEYS } from '../constants/translationKeys'
+import { SORT_TYPES } from '../constants/shop'
 
 /**
  * Muestra los alimentos con búsqueda, filtros, ordenación y paginación.
@@ -76,9 +77,9 @@ const Menu = () => {
               onChange={(e) => changeSort(e.target.value)}
               className="text-sm p-2.5 outline-hidden bg-deep text-gray-30 rounded-sm ring-1 ring-slate-900/10"
             >
-              <option value="relevant">{t(keys.relevant)}</option>
-              <option value="low">{t(keys.low)}</option>
-              <option value="high">{t(keys.high)}</option>
+              <option value={SORT_TYPES.RELEVANT}>{t(keys.relevant)}</option>
+              <option value={SORT_TYPES.LOW}>{t(keys.low)}</option>
+              <option value={SORT_TYPES.HIGH}>{t(keys.high)}</option>
             </select>
           </div>
         </div>
