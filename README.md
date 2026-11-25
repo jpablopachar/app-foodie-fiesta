@@ -14,6 +14,18 @@ la API se muestran tal como los devuelve el servidor.
 
 Para comprobar los cálculos del carrito ejecuta `node --test src/utils/cart.test.js`.
 
+## Depuración en VS Code
+
+Abre en VS Code la carpeta que contiene `app-foodie-fiesta` y
+`app-foodie-fiesta-server`. Instala las dependencias de ambos proyectos y configura
+sus archivos `.env`, incluida `VITE_SERVER_URL` con el prefijo `/api`.
+
+En **Ejecutar y depurar**, selecciona **Servidor y cliente** y pulsa F5. Vite
+abrirá Chrome al estar listo; coloca puntos de interrupción en el servidor o el
+cliente. También puedes iniciar **Servidor** o **Cliente** por separado. El
+servidor no se reinicia automáticamente al modificar sus archivos: reinicia su
+sesión de depuración para aplicar los cambios.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
