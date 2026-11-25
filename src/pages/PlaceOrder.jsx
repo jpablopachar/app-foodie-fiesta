@@ -5,6 +5,7 @@ import CartTotal from '../components/CartTotal'
 import Footer from '../components/Footer'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { ROUTES } from '../constants/routes'
 
 const PlaceOrder = () => {
   const {
@@ -74,7 +75,7 @@ const PlaceOrder = () => {
 
           if (response.data.success) {
             setCartItems({})
-            navigate('/orders')
+            navigate(ROUTES.ORDERS)
           } else {
             toast.error(response.data.message)
           }

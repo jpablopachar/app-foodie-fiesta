@@ -3,6 +3,7 @@ import { ShopContext } from '../context/ShopContext'
 import { useSearchParams } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { ROUTES } from '../constants/routes'
 
 const Verify = () => {
   const { navigate, token, setCartItems, backendUrl } = useContext(ShopContext)
@@ -25,9 +26,9 @@ const Verify = () => {
 
       if (response.data.success) {
         setCartItems({})
-        navigate('/orders')
+        navigate(ROUTES.ORDERS)
       } else {
-        navigate('/cart')
+        navigate(ROUTES.CART)
       }
     } catch (error) {
       console.log(error)

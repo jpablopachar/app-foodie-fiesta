@@ -11,5 +11,11 @@ export const ROUTES = {
   /* Ruta de contacto */
   CONTACT: '/contact',
   /* Ruta de pedidos */
-  CART: '/cart'
+  CART: '/cart',
+  /* Ruta para completar el pedido */
+  PLACE_ORDER: '/place-order',
+  /* Ruta de órdenes */
+  ORDERS: '/orders',
+  /* Ruta para verificar el pago */
+  VERIFY: '/verify',
 }

@@ -7,6 +7,7 @@ import { STATES } from '../constants/states'
 import { TRANSLATION_KEYS } from '../constants/translationKeys'
 import { loginUser, registerUser } from '../services/userService'
 import { useTranslation } from 'react-i18next'
+import { ROUTES } from '../constants/routes'
 
 /**
  * Muestra el formulario para iniciar sesión o crear una cuenta.
@@ -67,7 +68,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/')
+      navigate(ROUTES.HOME)
     }
   }, [token])
 

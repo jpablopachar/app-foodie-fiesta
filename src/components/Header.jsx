@@ -91,7 +91,7 @@ const Header = () => {
               {token && (
                 <>
                   <ul className="bg-white shadow-xs p-2 w-32 ring-1 ring-slate-900/15 rounded-sm absolute right-0 top-10 hidden group-hover:flex flex-col">
-                    <li onClick={() => navigate('/orders')} className="flexBetween cursor-pointer">
+                    <li onClick={() => navigate(ROUTES.ORDERS)} className="flexBetween cursor-pointer">
                       <p>{t(TRANSLATION_KEYS.common.navigation.orders)}</p>
                       <TbArrowNarrowRight className="opacity-50 text-[19px]" />
                     </li>

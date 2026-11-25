@@ -23,12 +23,12 @@ function App() {
         <Routes>
           <Route path={ROUTES.LOGIN} element={<Login />} />
           <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path="/menu" element={<Menu />}/>
-          <Route path="/contact" element={<Contact />}/>
-          <Route path="/cart" element={<Cart />}/>
-          <Route path="/place-order" element={<PlaceOrder />}/>
-          <Route path="/orders" element={<Orders />}/>
-          <Route path="/verify" element={<Verify />}/>
+          <Route path={ROUTES.MENU} element={<Menu />} />
+          <Route path={ROUTES.CONTACT} element={<Contact />} />
+          <Route path={ROUTES.CART} element={<Cart />} />
+          <Route path={ROUTES.PLACE_ORDER} element={<PlaceOrder />} />
+          <Route path={ROUTES.ORDERS} element={<Orders />} />
+          <Route path={ROUTES.VERIFY} element={<Verify />} />
         </Routes>
       </main>
     </>
