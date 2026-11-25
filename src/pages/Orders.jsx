@@ -1,57 +1,59 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import { getUserOrders } from '../services/orderService'
+import { showError } from '../utils/notifications'
 import Title from '../components/Title'
 import Footer from '../components/Footer'
+import { useTranslation } from 'react-i18next'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
+import { ORDER_PAYMENT_METHODS, ORDER_STATUSES } from '../constants/shop'
 
+/**
+ * Muestra los productos de los pedidos del usuario y permite actualizar su estado.
+ * @returns Página de pedidos.
+ */
 const Orders = () => {
-  const { backendUrl, token, currency } = useContext(ShopContext)
+  const { t, i18n } = useTranslation('common')
+
+  const keys = TRANSLATION_KEYS.common.orders
+
+  const { token, currency } = useContext(ShopContext)
 
   const [orderData, setOrderData] = useState([])
 
-  const loadOrderData = async () => {
-    try {
-      if (!token) {
-        return null
-      }
+  const loadOrderData = useCallback(() => {
+    if (!token) return
 
-      const response = await axios.post(
-        backendUrl + '/api/order/userorders',
-        {},
-        { headers: { token } },
-      )
+    getUserOrders(token)
+      .then((response) => {
+        if (response.data.success) {
+          const allOrdersItem = response.data.orders.flatMap((order) =>
+            order.items.map((item) => ({
+              ...item, status: order.status, payment: order.payment,
+              paymentMethod: order.paymentMethod, date: order.date,
+            })),
+          )
 
-      if (response.data.success) {
-        let allOrdersItem = []
+          setOrderData(allOrdersItem.reverse())
+        } else {
+          showError(response.data.message)
+        }
+      })
+      .catch((error) => {
+        console.error(error)
 
-        response.data.orders.map((order) => {
-          order.items.map((item) => {
-            item['status'] = order.status
-            item['payment'] = order.payment
-            item['paymentMethod'] = order.paymentMethod
-            item['date'] = order.date
-            allOrdersItem.push(item)
-          })
-        })
-
-        setOrderData(allOrdersItem.reverse())
-      }
-    } catch (error) {
-      console.log(error)
-
-      toast.error(error.message)
-    }
-  }
+        showError(error.message)
+      })
+  }, [token])
 
   useEffect(() => {
     loadOrderData()
-  }, [token])
+  }, [loadOrderData])
 
   return (
     <div className="max-padd-container mt-24">
       <div className="pt-6 pb-20">
-        <Title title1={'Orders'} title2={'List'} titleStyles={'h3'} />
+        <Title title1={t(keys.title)} title2={t(keys.list)} titleStyles={'h3'} />
         {orderData.map((item, i) => (
           <div key={i} className="p-2 rounded-xl bg-deep mt-2">
             <div className="text-gray-700 flex flex-col gap-4">
@@ -65,38 +67,38 @@ const Orders = () => {
                     <div className="text-xs">
                       <div className="flex items-center gap-x-2 sm:gap-x-3">
                         <div className="flexCenter gap-x-2">
-                          <h5 className="medium-14">Price:</h5>
+                          <h5 className="medium-14">{t(keys.price)}</h5>
                           <p>
                             {currency}
                             {item.price[item.size]}
                           </p>
                         </div>
                         <div className="flexCenter gap-x-2">
-                          <h5 className="medium-14">Quantity:</h5>
+                          <h5 className="medium-14">{t(keys.quantity)}</h5>
                           <p>{item.quantity}</p>
                         </div>
                         <div className="flexCenter gap-x-2">
-                          <h5 className="medium-14">Size:</h5>
+                          <h5 className="medium-14">{t(keys.size)}</h5>
                           <p>{item.size}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-x-2">
-                        <h5 className="medium-14">Date:</h5>
-                        <p className="text-gray-400">{new Date(item.date).toDateString()}</p>
+                        <h5 className="medium-14">{t(keys.date)}</h5>
+                        <p className="text-gray-400">{new Date(item.date).toLocaleDateString(i18n.resolvedLanguage)}</p>
                       </div>
                       <div className="flex items-center gap-x-2">
-                        <h5 className="medium-14">Payment:</h5>
-                        <p className="text-gray-400">{item.paymentMethod}</p>
+                        <h5 className="medium-14">{t(keys.payment)}</h5>
+                        <p className="text-gray-400">{item.paymentMethod === ORDER_PAYMENT_METHODS.COD ? t(keys.cod) : item.paymentMethod}</p>
                       </div>
                     </div>
                     {/* status and button */}
                     <div className="flex flex-col gap-2 sm:pr-4">
                       <div className="flex items-center gap-2">
                         <p className="min-w-2 h-2 rounded-full bg-green-500"></p>
-                        <p className="max-sm:text-xs">{item.status}</p>
+                        <p className="max-sm:text-xs">{item.status === ORDER_STATUSES.PLACED ? t(keys.placed) : item.status}</p>
                       </div>
                       <button onClick={loadOrderData} className="btn-secondary p-1! px-3! text-xs!">
-                        Track Order
+                        {t(keys.track)}
                       </button>
                     </div>
                   </div>

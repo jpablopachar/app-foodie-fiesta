@@ -22,5 +22,39 @@
   },
   "footer": {
     "rightsReserved": "Todos los derechos reservados"
+  },
+  "cart": {
+    "title": "Carrito", "list": "Lista", "total": "Total", "subtotal": "Subtotal:",
+    "shipping": "Envío:", "checkout": "Continuar al pago",
+    "remove": "Eliminar producto", "increase": "Aumentar cantidad", "decrease": "Reducir cantidad"
+  },
+  "contact": {
+    "get": "Ponte", "touch": "en contacto",
+    "description": "¿Tienes preguntas o necesitas ayuda? Envíanos un mensaje y te responderemos lo antes posible.",
+    "name": "Introduce tu nombre", "emailPlaceholder": "Introduce tu correo",
+    "message": "Escribe tu mensaje aquí", "send": "Enviar mensaje",
+    "title": "Datos", "details": "de contacto",
+    "detailsDescription": "Estamos aquí para ayudarte. Puedes contactarnos por cualquiera de los siguientes medios",
+    "location": "Ubicación:", "email": "Correo:", "phone": "Teléfono:", "support": "Soporte:",
+    "supportText": "Soporte disponible las 24 horas", "find": "Encuéntranos", "here": "aquí", "map": "Nuestra ubicación"
+  },
+  "menu": {
+    "search": "Buscar...", "categories": "Selecciona una categoría", "food": "Selección",
+    "selection": "de comida", "sort": "Ordenar por:", "relevant": "Relevancia", "low": "Menor precio",
+    "high": "Mayor precio", "empty": "No se encontraron alimentos para los filtros seleccionados", "previous": "Anterior", "next": "Siguiente",
+    "categoryNames": { "Curry": "Curry", "Pizza": "Pizza", "Rice": "Arroz", "Deserts": "Postres", "Drinks": "Bebidas", "Fruits": "Frutas" }
+  },
+  "orders": {
+    "title": "Lista", "list": "de pedidos", "price": "Precio:", "quantity": "Cantidad:",
+    "size": "Tamaño:", "date": "Fecha:", "payment": "Pago:", "track": "Consultar pedido",
+    "cod": "Pago contra entrega", "placed": "Pedido realizado"
+  },
+  "checkout": {
+    "delivery": "Información", "information": "de entrega", "firstName": "Nombre", "lastName": "Apellido",
+    "email": "Correo electrónico", "phone": "Teléfono", "street": "Calle", "city": "Ciudad", "state": "Provincia o estado",
+    "zipcode": "Código postal", "country": "País", "payment": "Método", "method": "de pago",
+    "cod": "Pago contra entrega", "place": "Realizar pedido", "invalidMethod": "Método de pago no válido",
+    "empty": "Tu carrito no tiene productos disponibles", "unavailable": "Algunos productos de tu carrito ya no están disponibles",
+    "verifying": "Verificando el pago..."
   }
 }

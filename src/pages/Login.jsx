@@ -12,6 +12,7 @@ import { ROUTES } from '../constants/routes'
 /**
  * Muestra el formulario para iniciar sesión o crear una cuenta.
  * Al autenticar al usuario, guarda su token y redirige a la página principal.
+ * @returns Formulario de autenticación.
  */
 const Login = () => {
   const { t } = useTranslation('auth')

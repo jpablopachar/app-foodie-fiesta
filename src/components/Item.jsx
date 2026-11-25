@@ -4,6 +4,7 @@ import { TbShoppingBagPlus } from 'react-icons/tb'
 import { ShopContext } from '../context/ShopContext'
 import { TRANSLATION_KEYS } from '../constants/translationKeys'
 import { useTranslation } from 'react-i18next'
+import { SIZE_ORDER } from '../constants/shop'
 
 /**
  * Muestra la información de un alimento y permite seleccionar su tamaño
@@ -34,7 +35,9 @@ const Item = ({ food }) => {
           <div className="py-3">
             <h4 className="bold-16 line-clamp-1 mb-1">{food.name}</h4>
             <div className="flex items-center justify-between pb-2">
-              <h5 className="medium-14">{food.category}</h5>
+              <h5 className="medium-14">
+                {t(`${TRANSLATION_KEYS.common.menu.categoryNames}.${food.category}`, { defaultValue: food.category })}
+              </h5>
               <div className="flex items-center justify-start gap-x-1 text-secondary bold-14">
                 <FaStar />
                 <FaStar />
@@ -49,9 +52,7 @@ const Item = ({ food }) => {
             <div className="flex gap-1">
               {[...food.sizes]
                 .sort((a, b) => {
-                  const order = ['H', 'F', 'S', 'M', 'L', 'XL']
-
-                  return order.indexOf(a) - order.indexOf(b)
+                  return SIZE_ORDER.indexOf(a) - SIZE_ORDER.indexOf(b)
                 })
                 .map((item, i) => (
                   <button

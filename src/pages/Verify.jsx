@@ -1,47 +1,49 @@
 import { useContext, useEffect } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import { useSearchParams } from 'react-router-dom'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import { verifyStripePayment } from '../services/orderService'
+import { showError } from '../utils/notifications'
 import { ROUTES } from '../constants/routes'
+import { useTranslation } from 'react-i18next'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
 
+/**
+ * Verifica el resultado del pago y redirige al carrito o a los pedidos.
+ * @returns Indicador de verificación.
+ */
 const Verify = () => {
-  const { navigate, token, setCartItems, backendUrl } = useContext(ShopContext)
-  const [searchParams, setSearchParams] = useSearchParams()
+  const { t } = useTranslation('common')
+  const { navigate, token, setCartItems } = useContext(ShopContext)
+  const [searchParams] = useSearchParams()
 
   const success = searchParams.get('success')
   const orderId = searchParams.get('orderId')
 
-  const verifyPayment = async () => {
-    try {
-      if (!token) {
-        return null
-      }
-
-      const response = await axios.post(
-        backendUrl + '/api/order/verifystripe',
-        { success, orderId },
-        { headers: { token } },
-      )
-
-      if (response.data.success) {
-        setCartItems({})
-        navigate(ROUTES.ORDERS)
-      } else {
-        navigate(ROUTES.CART)
-      }
-    } catch (error) {
-      console.log(error)
-
-      toast.error(error.message)
-    }
-  }
-
   useEffect(() => {
-    verifyPayment()
-  }, [token])
+    if (!token) return
 
-  return <div>Verify</div>
+    const verifyPayment = async () => {
+      try {
+        const response = await verifyStripePayment(success, orderId, token)
+
+        if (response.data.success) {
+          setCartItems({})
+          navigate(ROUTES.ORDERS)
+        } else {
+          if (response.data.message) showError(response.data.message)
+
+          navigate(ROUTES.CART)
+        }
+      } catch (error) {
+        console.error(error)
+
+        showError(error.message)
+      }
+    }
+    verifyPayment()
+  }, [token, success, orderId, navigate, setCartItems])
+
+  return <div>{t(TRANSLATION_KEYS.common.checkout.verifying)}</div>
 }
 
 export default Verify

@@ -29,6 +29,39 @@ export const TRANSLATION_KEYS = {
     footer: {
       rightsReserved: 'footer.rightsReserved',
     },
+    cart: {
+      title: 'cart.title', list: 'cart.list', total: 'cart.total',
+      subtotal: 'cart.subtotal', shipping: 'cart.shipping', checkout: 'cart.checkout',
+      remove: 'cart.remove', increase: 'cart.increase', decrease: 'cart.decrease',
+    },
+    contact: {
+      get: 'contact.get', touch: 'contact.touch', description: 'contact.description',
+      name: 'contact.name', emailPlaceholder: 'contact.emailPlaceholder', message: 'contact.message',
+      send: 'contact.send', title: 'contact.title', details: 'contact.details',
+      detailsDescription: 'contact.detailsDescription', location: 'contact.location',
+      email: 'contact.email', phone: 'contact.phone', support: 'contact.support',
+      supportText: 'contact.supportText', find: 'contact.find', here: 'contact.here', map: 'contact.map',
+    },
+    menu: {
+      search: 'menu.search', categories: 'menu.categories', food: 'menu.food',
+      selection: 'menu.selection', sort: 'menu.sort', relevant: 'menu.relevant',
+      low: 'menu.low', high: 'menu.high', empty: 'menu.empty',
+      previous: 'menu.previous', next: 'menu.next', categoryNames: 'menu.categoryNames',
+    },
+    orders: {
+      title: 'orders.title', list: 'orders.list', price: 'orders.price', quantity: 'orders.quantity',
+      size: 'orders.size', date: 'orders.date', payment: 'orders.payment', track: 'orders.track',
+      cod: 'orders.cod', placed: 'orders.placed',
+    },
+    checkout: {
+      delivery: 'checkout.delivery', information: 'checkout.information', firstName: 'checkout.firstName',
+      lastName: 'checkout.lastName', email: 'checkout.email', phone: 'checkout.phone',
+      street: 'checkout.street', city: 'checkout.city', state: 'checkout.state',
+      zipcode: 'checkout.zipcode', country: 'checkout.country', payment: 'checkout.payment',
+      method: 'checkout.method', cod: 'checkout.cod', place: 'checkout.place',
+      invalidMethod: 'checkout.invalidMethod', empty: 'checkout.empty',
+      unavailable: 'checkout.unavailable', verifying: 'checkout.verifying',
+    },
   },
   /** Textos de la página principal. */
   home: {

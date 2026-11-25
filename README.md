@@ -1,5 +1,19 @@
 # React + Vite
 
+## Organización del cliente
+
+Los componentes y páginas utilizan los servicios de `src/services` para acceder a la API
+configurada mediante `VITE_SERVER_URL` (incluido el prefijo `/api`). Las operaciones
+reutilizables del carrito y las notificaciones están en `src/utils`, y los filtros del
+menú en `src/hooks`.
+
+Los textos de la interfaz están en `src/i18n/locales/es` y `src/i18n/locales/en`;
+sus claves compartidas se declaran en `src/constants/translationKeys.js`. Los nombres
+y descripciones de productos, estados no reconocidos y mensajes de error enviados por
+la API se muestran tal como los devuelve el servidor.
+
+Para comprobar los cálculos del carrito ejecuta `node --test src/utils/cart.test.js`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

@@ -22,5 +22,39 @@
   },
   "footer": {
     "rightsReserved": "All rights reserved"
+  },
+  "cart": {
+    "title": "Cart", "list": "List", "total": "Total", "subtotal": "Subtotal:",
+    "shipping": "Shipping Fee:", "checkout": "Proceed to Checkout",
+    "remove": "Remove item", "increase": "Increase quantity", "decrease": "Decrease quantity"
+  },
+  "contact": {
+    "get": "Get", "touch": "in Touch",
+    "description": "Have questions or need help? Send us a message, and we'll get back to you as soon as possible.",
+    "name": "Enter your name", "emailPlaceholder": "Enter your email",
+    "message": "Write your message here", "send": "Send Message",
+    "title": "Contact", "details": "Details",
+    "detailsDescription": "We are always here to assist you! Feel free to reach out to us through any of the following methods",
+    "location": "Location:", "email": "Email:", "phone": "Phone:", "support": "Support:",
+    "supportText": "24/7 Support is open", "find": "Find", "here": "us Here", "map": "Our location"
+  },
+  "menu": {
+    "search": "Search here...", "categories": "Select by Category", "food": "Food",
+    "selection": "Selection", "sort": "Sort By:", "relevant": "Relevant", "low": "Low",
+    "high": "High", "empty": "No foods found for selected filters", "previous": "Previous", "next": "Next",
+    "categoryNames": { "Curry": "Curry", "Pizza": "Pizza", "Rice": "Rice", "Deserts": "Desserts", "Drinks": "Drinks", "Fruits": "Fruits" }
+  },
+  "orders": {
+    "title": "Orders", "list": "List", "price": "Price:", "quantity": "Quantity:",
+    "size": "Size:", "date": "Date:", "payment": "Payment:", "track": "Track Order",
+    "cod": "Cash on Delivery", "placed": "Order Placed"
+  },
+  "checkout": {
+    "delivery": "Delivery", "information": "Information", "firstName": "First Name", "lastName": "Last Name",
+    "email": "Email", "phone": "Phone Number", "street": "Street", "city": "City", "state": "State",
+    "zipcode": "Zip Code", "country": "Country", "payment": "Payment", "method": "Method",
+    "cod": "Cash on Delivery", "place": "Place Order", "invalidMethod": "Invalid payment method",
+    "empty": "Your cart has no available products", "unavailable": "Some products in your cart are no longer available",
+    "verifying": "Verifying payment..."
   }
 }

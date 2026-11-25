@@ -3,23 +3,35 @@ import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
 import Footer from '../components/Footer'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import { placeOrder, placeStripeOrder } from '../services/orderService'
+import { showError } from '../utils/notifications'
+import { getCartProducts } from '../utils/cart'
 import { ROUTES } from '../constants/routes'
+import { PAYMENT_METHODS } from '../constants/shop'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
+import { useTranslation } from 'react-i18next'
 
+/**
+ * Recoge los datos de entrega y envía el pedido con el método de pago elegido.
+ * @returns Formulario de finalización de compra.
+ */
 const PlaceOrder = () => {
+  const { t } = useTranslation('common')
+
+  const keys = TRANSLATION_KEYS.common.checkout
+
   const {
     navigate,
-    backendUrl,
     cartItems,
     setCartItems,
     getCartAmount,
-    delivery_charges,
+    getCartCount,
+    deliveryCharges,
     foods,
     token,
   } = useContext(ShopContext)
 
-  const [method, setMethod] = useState('cod')
+  const [method, setMethod] = useState(PAYMENT_METHODS.COD)
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -44,64 +56,61 @@ const PlaceOrder = () => {
     event.preventDefault()
 
     try {
-      let orderItems = []
+      const orderItems = getCartProducts(cartItems, foods)
 
-      for (const items in cartItems) {
-        for (const item in cartItems[items]) {
-          if (cartItems[items][item] > 0) {
-            const itemInfo = structuredClone(foods.find((food) => food._id === items))
+      if (!orderItems.length) {
+        showError(t(keys.empty))
 
-            if (itemInfo) {
-              itemInfo.size = item
-              itemInfo.quantity = cartItems[items][item]
-
-              orderItems.push(itemInfo)
-            }
-          }
-        }
+        return
       }
 
-      let orderData = {
+      if (orderItems.reduce((total, item) => total + item.quantity, 0) !== getCartCount()) {
+        showError(t(keys.unavailable))
+
+        return
+      }
+
+      const orderData = {
         address: formData,
         items: orderItems,
-        amount: getCartAmount() + delivery_charges,
+        amount: getCartAmount() + deliveryCharges,
       }
 
       switch (method) {
-        case 'cod':
-          const response = await axios.post(backendUrl + '/api/order/place', orderData, {
-            headers: { token },
-          })
+        case PAYMENT_METHODS.COD: {
+          const response = await placeOrder(orderData, token)
 
           if (response.data.success) {
             setCartItems({})
             navigate(ROUTES.ORDERS)
           } else {
-            toast.error(response.data.message)
+            showError(response.data.message)
           }
 
           break
-        case 'stripe':
-          const responseStripe = await axios.post(backendUrl + '/api/order/stripe', orderData, {
-            headers: { token },
-          })
+        }
+        case PAYMENT_METHODS.STRIPE: {
+          const responseStripe = await placeStripeOrder(orderData, token)
 
           if (responseStripe.data.success) {
             const { session_url } = responseStripe.data
 
             window.location.replace(session_url)
           } else {
-            toast.error(responseStripe.data.message)
+            showError(responseStripe.data.message)
           }
 
           break
+        }
         default:
+          showError(t(keys.invalidMethod))
+
           break
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
 
-      toast.error(error.message)
+      showError(error.message)
     }
   }
 
@@ -110,7 +119,7 @@ const PlaceOrder = () => {
       <form onSubmit={onSubmitHandler} className="py-6">
         <div className="flex flex-col xl:flex-row gap-20 xl:gap-28">
           <div className="flex flex-1 flex-col gap-3 text-[95%]">
-            <Title title1={'Delivery'} title2={'Information'} title1Styles={'h3'} />
+            <Title title1={t(keys.delivery)} title2={t(keys.information)} title1Styles={'h3'} />
             <div className="flex gap-3">
               <input
                 required
@@ -118,7 +127,7 @@ const PlaceOrder = () => {
                 value={formData.firstName}
                 type="text"
                 name="firstName"
-                placeholder="First Name"
+                placeholder={t(keys.firstName)}
                 className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
               />
               <input
@@ -127,7 +136,7 @@ const PlaceOrder = () => {
                 value={formData.lastName}
                 type="text"
                 name="lastName"
-                placeholder="Last Name"
+                placeholder={t(keys.lastName)}
                 className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
               />
             </div>
@@ -137,7 +146,7 @@ const PlaceOrder = () => {
               value={formData.email}
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder={t(keys.email)}
               className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
             />
             <input
@@ -146,7 +155,7 @@ const PlaceOrder = () => {
               value={formData.phone}
               type="text"
               name="phone"
-              placeholder="Phone Number"
+              placeholder={t(keys.phone)}
               className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
             />
             <input
@@ -155,7 +164,7 @@ const PlaceOrder = () => {
               value={formData.street}
               type="text"
               name="street"
-              placeholder="Street"
+              placeholder={t(keys.street)}
               className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
             />
             <div className="flex gap-3">
@@ -165,7 +174,7 @@ const PlaceOrder = () => {
                 value={formData.city}
                 type="text"
                 name="city"
-                placeholder="City"
+                placeholder={t(keys.city)}
                 className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
               />
               <input
@@ -174,7 +183,7 @@ const PlaceOrder = () => {
                 value={formData.state}
                 type="text"
                 name="state"
-                placeholder="State"
+                placeholder={t(keys.state)}
                 className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
               />
             </div>
@@ -185,7 +194,7 @@ const PlaceOrder = () => {
                 value={formData.zipcode}
                 type="text"
                 name="zipcode"
-                placeholder="Zip Code"
+                placeholder={t(keys.zipcode)}
                 className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
               />
               <input
@@ -194,7 +203,7 @@ const PlaceOrder = () => {
                 value={formData.country}
                 type="text"
                 name="country"
-                placeholder="Country"
+                placeholder={t(keys.country)}
                 className="ring-1 ring-slate-900/15 p-1 pl-3 rounded-xs bg-deep outline-hidden"
               />
             </div>
@@ -203,26 +212,26 @@ const PlaceOrder = () => {
             <CartTotal />
             <div className="my-6">
               <h3 className="bold-20 mb-5">
-                Payment <span className="text-secondary">Method</span>
+                {t(keys.payment)} <span className="text-secondary">{t(keys.method)}</span>
               </h3>
               <div className="flex gap-3">
-                <div
-                  onClick={() => setMethod('stripe')}
-                  className={`${method === 'stripe' ? 'btn-secondary' : 'btn-outline'} py-1! text-xs cursor-pointer`}
+                <button type="button"
+                  onClick={() => setMethod(PAYMENT_METHODS.STRIPE)}
+                  className={`${method === PAYMENT_METHODS.STRIPE ? 'btn-secondary' : 'btn-outline'} py-1! text-xs cursor-pointer`}
                 >
                   Stripe
-                </div>
-                <div
-                  onClick={() => setMethod('cod')}
-                  className={`${method === 'cod' ? 'btn-secondary' : 'btn-outline'} p-1! px-3! text-xs cursor-pointer`}
+                </button>
+                <button type="button"
+                  onClick={() => setMethod(PAYMENT_METHODS.COD)}
+                  className={`${method === PAYMENT_METHODS.COD ? 'btn-secondary' : 'btn-outline'} p-1! px-3! text-xs cursor-pointer`}
                 >
-                  Cash on Delivery
-                </div>
+                  {t(keys.cod)}
+                </button>
               </div>
             </div>
             <div>
               <button type="submit" className="btn-dark rounded-sm!">
-                Place Order
+                {t(keys.place)}
               </button>
             </div>
           </div>

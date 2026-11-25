@@ -1,98 +1,62 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title'
 import { FaRegWindowClose } from 'react-icons/fa'
 import { FaPlus, FaMinus } from 'react-icons/fa6'
 import CartTotal from '../components/CartTotal'
 import { ROUTES } from '../constants/routes'
+import { getCartProducts } from '../utils/cart'
+import { useTranslation } from 'react-i18next'
+import { TRANSLATION_KEYS } from '../constants/translationKeys'
 
+/**
+ * Muestra el carrito y permite modificar cantidades o continuar al pago.
+ * @returns Página del carrito.
+ */
 const Cart = () => {
+  const { t } = useTranslation('common')
+
   const { foods, cartItems, currency, updateQuantity, navigate } = useContext(ShopContext)
 
-  const [cartData, setCartData] = useState([])
-  const [quantities, setQuantities] = useState({})
+  const keys = TRANSLATION_KEYS.common.cart
 
-  useEffect(() => {
-    if (foods.length > 0) {
-      const tempData = []
-      const initialQuantities = {}
-
-      for (const items in cartItems) {
-        for (const item in cartItems[items]) {
-          if (cartItems[items][item] > 0) {
-            tempData.push({
-              _id: items,
-              size: item,
-              quantity: cartItems[items][item],
-            })
-
-            initialQuantities[`${items}-${item}`] = cartItems[items][item]
-          }
-        }
-      }
-
-      setCartData(tempData)
-      setQuantities(initialQuantities)
-    }
-  }, [cartItems, foods])
-
-  const increment = (id, size) => {
-    const key = `${id}-${size}`
-    const newValue = quantities[key] + 1
-
-    setQuantities((prev) => ({ ...prev, [key]: newValue }))
-    updateQuantity(id, size, newValue)
-  }
-
-  const decrement = (id, size) => {
-    const key = `${id}-${size}`
-
-    if (quantities[key] > 1) {
-      const newValue = quantities[key] - 1
-
-      setQuantities((prev) => ({
-        ...prev,
-        [key]: newValue,
-      }))
-
-      updateQuantity(id, size, newValue)
-    }
-  }
+  const cartData = getCartProducts(cartItems, foods)
 
   return (
     <section className="max-padd-container mt-24">
       <div className="pt-6">
-        <Title title1={'Cart'} title2={'List'} titleStyles={'h3'} />
+        <Title title1={t(keys.title)} title2={t(keys.list)} titleStyles={'h3'} />
         <div>
-          {cartData.map((item, i) => {
-            const productData = foods.find((product) => product._id === item._id)
+          {cartData.map((item) => {
             const key = `${item._id}-${item.size}`
             return (
-              <div key={i} className="p-2 rounded-xl bg-deep mt-2">
+              <div key={key} className="p-2 rounded-xl bg-deep mt-2">
                 <div className="flex items-center gap-x-3">
                   <div className="flex items-start gap-6 p-2 bg-light rounded-xl">
-                    <img src={productData.image} alt="" className="w-16 sm:w-18" />
+                    <img src={item.image} alt="" className="w-16 sm:w-18" />
                   </div>
                   <div className="flex flex-col w-full">
                     <div className="flexBetween">
-                      <h5 className="h5 my-0! line-clamp-1">{productData.name}</h5>
-                      <FaRegWindowClose
+                      <h5 className="h5 my-0! line-clamp-1">{item.name}</h5>
+                      <button type="button" aria-label={t(keys.remove)}
                         onClick={() => updateQuantity(item._id, item.size, 0)}
                         className="cursor-pointer"
-                      />
+                      ><FaRegWindowClose /></button>
                     </div>
                     <p className="bold-14 my-0.5">{item.size}</p>
                     <div className="flexBetween">
                       <div className="flex items-center ring-1 ring-slate-900/5 rounded-full overflow-hidden bg-primary">
                         <button
-                          onClick={() => decrement(item._id, item.size)}
+                          onClick={() => item.quantity > 1 && updateQuantity(item._id, item.size, item.quantity - 1)}
+                          aria-label={t(keys.decrease)}
                           className="p-1.5 text-white bg-secondary rounded-full shadow-md"
                         >
                           <FaMinus className="text-xs" />
                         </button>
-                        <p className="px-2">{quantities[key]}</p>
+                        <p className="px-2">{item.quantity}</p>
                         <button
-                          onClick={() => increment(item._id, item.size)}
+                          onClick={() => updateQuantity(item._id, item.size, item.quantity + 1)}
+                          aria-label={t(keys.increase)}
                           className="p-1.5 text-white bg-secondary rounded-full shadow-md"
                         >
                           <FaPlus className="text-xs" />
@@ -100,7 +64,7 @@ const Cart = () => {
                       </div>
                       <h4 className="h4">
                         {currency}
-                        {productData.price[item.size]}
+                        {item.price[item.size]}
                       </h4>
                     </div>
                   </div>
@@ -113,7 +77,7 @@ const Cart = () => {
           <div className="w-full sm:w-112.5">
             <CartTotal />
             <button onClick={() => navigate(ROUTES.PLACE_ORDER)} className="btn-secondary mt-7">
-              Proceed to Checkout
+              {t(keys.checkout)}
             </button>
           </div>
         </div>

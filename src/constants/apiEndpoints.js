@@ -12,4 +12,14 @@ export const API_ENDPOINTS = {
   ADD_CART: '/cart/add',
   /** Ruta para obtener el carrito del usuario. */
   GET_CART: '/cart/get',
+  /** Ruta para actualizar el carrito del usuario. */
+  UPDATE_CART: '/cart/update',
+  /** Ruta para realizar un pedido. */
+  PLACE_ORDER: '/order/place',
+  /** Ruta para realizar un pedido con Stripe. */
+  STRIPE_ORDER: '/order/stripe',
+  /** Ruta para verificar el pago con Stripe. */
+  VERIFY_STRIPE: '/order/verifyStripe',
+  /** Ruta para obtener los pedidos del usuario. */
+  USER_ORDERS: '/order/userOrders',
 }

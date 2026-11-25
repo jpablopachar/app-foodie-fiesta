@@ -2,11 +2,12 @@ import { createContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { CURRENCY, DELIVERY_CHARGES } from '../constants/shop'
-import { addCartItem, getUserCart as fetchUserCart } from '../services/cartService'
+import { addCartItem, getUserCart as fetchUserCart, updateCartItem } from '../services/cartService'
 import { serverUrl } from '../services/httpClient'
 import getProductsFromService from '../services/productService'
 import { showError } from '../utils/notifications'
 import { getStoredToken } from '../utils/storage'
+import { calculateCartAmount } from '../utils/cart'
 
 /**
  * Contexto con el estado y las acciones compartidas de la tienda.
@@ -51,7 +52,35 @@ const ShopContextProvider = (props) => {
 
     if (token) {
       try {
-        await addCartItem(itemId, size, token)
+        const response = await addCartItem(itemId, size, token)
+
+        if (!response.data.success) showError(response.data.message)
+      } catch (error) {
+        console.error(error)
+
+        showError(error.message)
+      }
+    }
+  }
+
+  /**
+   * Actualiza la cantidad local y la sincroniza con el carrito del usuario.
+   * @param {string} itemId - Identificador del producto.
+   * @param {string} size - Tamaño seleccionado.
+   * @param {number} quantity - Cantidad deseada.
+   * @returns {Promise<void>} Resultado de la actualización.
+   */
+  const updateQuantity = async (itemId, size, quantity) => {
+    setCartItems((current) => ({
+      ...current,
+      [itemId]: { ...current[itemId], [size]: quantity },
+    }))
+
+    if (token) {
+      try {
+        const response = await updateCartItem(itemId, size, quantity, token)
+
+        if (!response.data.success) showError(response.data.message)
       } catch (error) {
         console.error(error)
 
@@ -115,6 +144,8 @@ const ShopContextProvider = (props) => {
 
       if (res.data.success) {
         setCartItems(res.data.cartData)
+      } else {
+        showError(res.data.message)
       }
     } catch (error) {
       console.log(error)
@@ -147,6 +178,8 @@ const ShopContextProvider = (props) => {
     setCartItems,
     setToken,
     addToCart,
+    updateQuantity,
+    getCartAmount: () => calculateCartAmount(cartItems, foods),
     getCartCount,
     getProducts,
     getUserCart,

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from './Title'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -16,14 +16,10 @@ import { useTranslation } from 'react-i18next'
  */
 const PopularFoods = () => {
   const { t } = useTranslation('home')
+
   const { foods } = useContext(ShopContext)
-  const [popularFoods, setPopularFoods] = useState([])
 
-  useEffect(() => {
-    const data = foods.filter((item) => item.popular)
-
-    setPopularFoods(data.slice(0, 6))
-  }, [foods])
+  const popularFoods = foods.filter((item) => item.popular).slice(0, 6)
 
   return (
     <section className="max-padd-container pt-16">
